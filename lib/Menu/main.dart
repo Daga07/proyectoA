@@ -68,7 +68,7 @@ Widget Menu(){
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ImganeRadio(),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 20),
                       Loge(),
                     ],
                   ),
@@ -82,12 +82,20 @@ Widget Menu(){
 
 Widget ImganeRadio(){
   return Container(
-      width: 100,
+      width: 130,
       height: 100,
        decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
       ),
+        clipBehavior: Clip.hardEdge,
+
+          child: const Image(
+            image:AssetImage("imagenes/towerucev.png"),
+            fit: BoxFit.contain
+            ),
+              
+ 
   );
 }
 
@@ -112,10 +120,16 @@ Widget Loge(){
                       Container(
                         width: 60,
                         height: 60,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                        ),  
+                        decoration: const BoxDecoration(
+                         color: Colors.purple,
+                          shape: BoxShape.circle,
+                           image: DecorationImage(
+             image: AssetImage(
+             ("imagenes/usuario.png"),
+      ), //AssetImage
+      fit: BoxFit.cover
+    ),)
+                     
                       ),
                     ],
                 ),
@@ -129,6 +143,7 @@ Widget Loge(){
                         borderRadius: BorderRadius.circular(40),
                         border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
                         ),  
+                        
                       ),
                     ],
                 ),
