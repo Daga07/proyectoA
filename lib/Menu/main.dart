@@ -1,4 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:proyecto/Login/Log-in.dart';
@@ -36,7 +38,7 @@ Widget Menu(){
                 bottom: Radius.circular(10), // Radio de borde en la parte inferior
               ),
               gradient: LinearGradient(
-                colors: [Color.fromARGB(255, 124, 189, 243), Color.fromARGB(255, 133, 240, 137)], // Colores del degradado
+                colors:[Color.fromARGB(248, 53, 119, 51), Color.fromARGB(167, 160, 61, 122)], // Colores del degradado
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -82,11 +84,11 @@ Widget Menu(){
 
 Widget ImganeRadio(){
   return Container(
-      width: 130,
-      height: 100,
+      width: 140,
+      height: 110,
        decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
+        border: Border.all(color: const Color.fromARGB(167, 72, 160, 61),width: 0.1),
       ),
         clipBehavior: Clip.hardEdge,
 
@@ -106,7 +108,7 @@ Widget Loge(){
       height: 300,
        decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
+        border: Border.all(color: const Color.fromARGB(153, 117, 40, 128),width: 0.2),
       ),
         
         child: Column(
@@ -118,32 +120,43 @@ Widget Loge(){
                     children: <Widget>[
                       const SizedBox(height: 50),
                       Container(
-                        width: 60,
-                        height: 60,
+                        width:50,
+                        height: 50,
                         decoration: const BoxDecoration(
-                         color: Colors.purple,
+                          color: Color.fromARGB(0, 255, 255, 255),
                           shape: BoxShape.circle,
                            image: DecorationImage(
-             image: AssetImage(
-             ("imagenes/usuario.png"),
-      ), //AssetImage
-      fit: BoxFit.cover
-    ),)
-                     
+                            image: AssetImage(
+                            ("imagenes/correo.png"),
+                             ), //AssetImage
+                              fit: BoxFit.contain
+                            ),
+                            ),
                       ),
                     ],
                 ),
                   Column(
                     children: <Widget>[
                       const SizedBox(height: 50),
-                      Container(
+                      SizedBox(
                         width: 180,
-                        height: 60,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                        ),  
-                        
+                        height: 50,
+                        child:   TextField(
+                        style: const TextStyle(fontSize: 15),
+                        obscureText: false,  
+                        decoration: InputDecoration(
+                        labelText: 'Correo',
+                        hintText: 'Introduce tu Correo', // Texto de muestra cuando el cuadro de texto está vacío
+                        contentPadding: const EdgeInsets.all(20),
+                        border: OutlineInputBorder( // Borde del campo
+                        borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder( // Borde cuando el campo está enfocado
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Color.fromARGB(192, 160, 61, 122), width: 2),
+                         ),       
+                         ),
+                         ),
                       ),
                     ],
                 ),
@@ -154,27 +167,46 @@ Widget Loge(){
               children:<Widget> [
                 Column(
                     children: <Widget>[
-                       const SizedBox(height: 20),
+                      const SizedBox(height: 50),
                       Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                        ),  
+                        width: 50,
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(0, 255, 255, 255),
+                          shape: BoxShape.circle,
+                           image: DecorationImage(
+                            image: AssetImage(
+                            ("imagenes/contraseña.png"),
+                             ), //AssetImage
+                              fit: BoxFit.contain
+                            ),
+                            ),
                       ),
                     ],
                 ),
                   Column(
                     children: <Widget>[
                       const SizedBox(height: 20),
-                      Container(
+                        SizedBox(
                         width: 180,
-                        height: 60,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                        ),  
+                        height: 50,
+                        child:   TextField(
+                        style: const TextStyle(fontSize: 15),
+                        obscureText: true,  
+                        decoration: InputDecoration(
+                        labelText: 'Contraseña',
+                        hintText: 'Introduce tu Contraseña', // Texto de muestra cuando el cuadro de texto está vacío
+                        contentPadding: const EdgeInsets.all(20),
+                        border: OutlineInputBorder( // Borde del campo
+                        borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder( // Borde cuando el campo está enfocado
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Color.fromARGB(192, 160, 61, 122), width: 2),
+             ),       
+           ),
+         ),
+                        
                       ),
                     ],
                 ),
@@ -183,15 +215,25 @@ Widget Loge(){
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              
             children: <Widget>[
               Container(
                         width: 100,
                         height: 40,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                        ),  
+                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20), // Bordes redondeados
+                          ),
+                          elevation: 20, // Sombra del botón
+                        ),
+          onPressed: 
+            null,
+          child: const Text(
+            'Navigate',
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
                       ),
                       const SizedBox(width: 20),
                       Container(
