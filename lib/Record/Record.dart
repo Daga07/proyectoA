@@ -2,19 +2,23 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Log_in extends StatelessWidget {
-  const Log_in({super.key});
+class Record extends StatelessWidget {
+  const Record({super.key});
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: 250,
-        height: 410,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          border: Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-        ),
-        child: Column(
+    return Container(
+      
+        width: double.infinity,
+        height: double.infinity,
+        child: Ingresar(),
+    );
+  }
+}
+
+// ignore: non_constant_identifier_names
+Widget Ingresar(){
+   return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 10),
             Row(
@@ -192,8 +196,5 @@ class Log_in extends StatelessWidget {
               ],
             )
           ],
-        ),
-      ),
-    );
-  }
+        );
 }

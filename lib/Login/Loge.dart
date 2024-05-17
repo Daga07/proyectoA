@@ -1,8 +1,13 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:proyecto/Help_user/Help.dart';
+import 'package:proyecto/Record/Record.dart';
 
 
 class Loge extends StatelessWidget {
+  const Loge({super.key});
+
   @override
   Widget build(BuildContext context) {
    
@@ -126,8 +131,7 @@ class Loge extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              width: 100,
-              height: 40,
+           
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
@@ -137,11 +141,26 @@ class Loge extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Help()),
+                MaterialPageRoute(builder: (context) => const Record()),
               );
             },
-            child: Text('Ir a la Segunda Pantalla'),
-          ),
+            style: ElevatedButton.styleFrom(
+        foregroundColor: const Color.fromARGB(255, 0, 0, 0), 
+        backgroundColor: const Color.fromARGB(255, 240, 211, 240), // Color del texto
+        padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0), // Padding del botón
+        textStyle: const TextStyle(
+          fontSize: 12,
+          fontFamily: 'Montserrat', // Fuente personalizada
+          fontWeight: FontWeight.bold,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30), // Bordes redondeados
+        ),
+        elevation: 10, // Sombra del botón
+        shadowColor: Colors.black, // Color de la sombra
+      ),
+      child: const Text('Registro'),
+    )
         ),
             const SizedBox(width: 20),
            Container(
@@ -158,7 +177,7 @@ class Loge extends StatelessWidget {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Help()),
+        MaterialPageRoute(builder: (context) => const Help()),
       );
     },
    
