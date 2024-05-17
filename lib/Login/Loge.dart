@@ -88,7 +88,7 @@ class Loge extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage(
-                          ("imagenes/contraseña.png"),
+                          ("imagenes/codigo.png"),
                         ), //AssetImage
                         fit: BoxFit.contain),
                   ),
