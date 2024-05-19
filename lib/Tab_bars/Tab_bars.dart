@@ -9,7 +9,7 @@ class Tan_bars extends StatelessWidget {
   const Tan_bars({super.key});
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return  DefaultTabController(
       length: 3,
       child: Scaffold(
         body: Column(
@@ -17,13 +17,23 @@ class Tan_bars extends StatelessWidget {
             TabBar(
               tabs: <Widget>[
                 Tab(
-                  icon: Icon(Icons.sensors),
+  child: Container(
+    decoration: BoxDecoration(
+      color: Colors.red,
+      borderRadius: BorderRadius.circular(10),
+    ),
+    padding: EdgeInsets.all(8),
+    child: Icon(Icons.sensors),
+  ),
+),
+                Tab(
+                  child: Image(image: AssetImage("imagenes/sensor.gif")),
                 ),
                 Tab(
-                  icon: Icon(Icons.yard_outlined),
+                 child: Image(image: AssetImage("imagenes/light.gif")),
                 ),
                 Tab(
-                  icon: Icon(Icons.align_horizontal_left),
+                  child: Image(image: AssetImage("imagenes/info.gif")),
                 ),
               ],
             ),

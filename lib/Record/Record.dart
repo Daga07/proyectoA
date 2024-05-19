@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:proyecto/Tab_bars/Tab_bars.dart';
 
 // ignore: camel_case_types
 class Record extends StatelessWidget {
@@ -24,7 +25,7 @@ class Record extends StatelessWidget {
                   colors: [
                     Color.fromARGB(167, 160, 61, 122),
                     Color.fromARGB(235, 73, 170, 173),
-                    Color.fromARGB(167, 160, 61, 110)
+                    Color.fromARGB(167, 61, 160, 61)
                   ], // Colores del degradado
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -45,7 +46,7 @@ class Record extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
               child: Center(
-                child: Ingresar(),
+                child: Ingresar(context),
               ),
             ),
           ),
@@ -56,7 +57,7 @@ class Record extends StatelessWidget {
 }
 
 // ignore: non_constant_identifier_names
-Widget Ingresar() {
+Widget Ingresar(BuildContext context) {
   return SingleChildScrollView(
     child: Container(
       width: 280,
@@ -297,23 +298,41 @@ Widget Ingresar() {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
-                width: 100,
-                height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  border:
-                      Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
+                  border: Border.all(
+                      color: const Color.fromARGB(146, 40, 114, 56),
+                      width: 0.5),
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      // ignore: prefer_const_constructors
+                      MaterialPageRoute(builder: (context) => Tan_bars()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+                    backgroundColor: const Color.fromARGB(255, 213, 240, 211),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32.0, vertical: 16.0), // Padding del botón
+                    textStyle: const TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'Montserrat', // Fuente personalizada
+                      fontWeight: FontWeight.bold,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(30), // Bordes redondeados
+                    ),
+                    elevation: 40, // Sombra del botón
+                    shadowColor: Colors.black, // Color de la sombra
+                  ),
+                  child: const Text('Registrarse'),
                 ),
               ),
-              Container(
-                width: 100,
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border:
-                      Border.all(color: const Color.fromARGB(153, 255, 0, 0)),
-                ),
-              ),
+           
             ],
           )
         ],
