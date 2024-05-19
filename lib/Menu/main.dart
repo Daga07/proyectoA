@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:proyecto/Help_user/Help.dart';
 import 'package:proyecto/Login/Loge.dart';
 // ignore: unused_import
@@ -57,19 +58,9 @@ Widget Menu(context) {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(
-              255, 222, 231, 236), // Color de fondo del cuerpo
-          borderRadius: BorderRadius.circular(20.0), // Bordes redondeados
-          boxShadow: [
-            BoxShadow(
-              color: const Color.fromARGB(255, 0, 248, 186)
-                  .withOpacity(0.3), // Color de sombra
-              spreadRadius: 3, // Extensión de la sombra
-              blurRadius: 3, // Difuminado de la sombra
-              offset: const Offset(0, 1), // Desplazamiento de la sombra
-            ),
-          ],
+        decoration: const BoxDecoration(
+          color:
+              Color.fromARGB(255, 255, 255, 255), // Color de fondo del cuerpo
         ),
         child: Center(
           child: SingleChildScrollView(
@@ -78,7 +69,7 @@ Widget Menu(context) {
               children: <Widget>[
                 ImganeRadio(),
                 const SizedBox(height: 20),
-                Loge(),
+                const Loge(),
               ],
             ),
           ),
