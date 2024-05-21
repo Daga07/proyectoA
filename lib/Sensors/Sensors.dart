@@ -8,7 +8,6 @@ class Sensors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 102, 0, 150),
       ),
       child: SingleChildScrollView(
         child: Column(
