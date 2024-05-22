@@ -1,54 +1,63 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:proyecto/Sensors/Sensors.dart';
 
 class Help extends StatelessWidget {
   const Help({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Navegación con Botón'),
-          ),
           body: Center(
-            child: botones(context),
-          )),
+        child: botones(context),
+      )),
     );
   }
 
   Widget botones(context) {
-    return Row(
-      children: [
-        Container(
-          child: InkWell(
-            onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return Center(
-                      child: AlertDialog(
-                        title: Text("TOMATE"),
-                        content: Text(
-                            "Mayor producción, gran calidad en sus cosechas y una alta calidad nutricional, además no requiere de pesticidas y plaguicidas"),
-                        actions: <Widget>[
-                          MaterialButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text('Salir'),
-                          )
-                        ],
-                      ),
-                    );
-                  }
-                  );
-              print('Imagen clik');
-            },
-            child: Image.asset("image_cultivos/tomate.png"),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 10),
+          Container(
+            width: 100,
+            height: 80,
+            decoration: const BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage("imagenes/manual.gif"),
+                fit: BoxFit
+                    .cover, // Puedes ajustar esto para mantener la relación de aspecto
+              ))),
+          const SizedBox(height: 10),
+          Container(
+            width: 150,
+            height: 40,
+            decoration: const BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage("imagenes/manualcultivo.png"),
+                fit: BoxFit
+                    .cover, // Puedes ajustar esto para mantener la relación de aspecto
+              ))),
+          const SizedBox(height: 10),
+          Container(
+              width: 180,
+              height: 40,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage("imagenes/manualapp.png"),
+                fit: BoxFit
+                    .cover, // Puedes ajustar esto para mantener la relación de aspecto
+              ))),
+          const SizedBox(height: 10),
+          Container(
+            width: 150,
+            height: 40,
+            decoration: const BoxDecoration(color: Colors.brown),
           ),
-        ),
-      ],
+          const SizedBox(height: 10),
+        ],
+      ),
     );
   }
 }

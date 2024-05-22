@@ -1,7 +1,7 @@
-import 'dart:js';
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class Plant extends StatelessWidget {
   const Plant({super.key});
@@ -65,7 +65,7 @@ Widget Plant_Information(BuildContext context) {
                   child: Image.asset("imagenes/tomate.png"),
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
                Container(
                 width: 180,
                 height: 160,

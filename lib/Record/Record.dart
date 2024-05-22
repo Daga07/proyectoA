@@ -331,13 +331,17 @@ Widget Ingresar(BuildContext context) {
                   ),
                   child: const Text('Registrarse'),
                 ),
-              ),
+            ),
+    
            
             ],
           )
         ],
+        
       ),
+      
     ),
+    
   );
 }
 

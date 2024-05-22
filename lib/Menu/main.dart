@@ -70,6 +70,7 @@ Widget Menu(context) {
                 ImganeRadio(),
                 const SizedBox(height: 20),
                 const Loge(),
+                const SizedBox(height: 30),
               ],
             ),
           ),
