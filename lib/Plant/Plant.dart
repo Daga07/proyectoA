@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class Plant extends StatelessWidget {
   const Plant({super.key});
   @override
@@ -35,11 +34,12 @@ Widget Plant_Information(BuildContext context) {
               Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
@@ -66,14 +66,15 @@ Widget Plant_Information(BuildContext context) {
                 ),
               ),
               const SizedBox(width: 10),
-               Container(
+              Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
@@ -112,11 +113,12 @@ Widget Plant_Information(BuildContext context) {
               Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
@@ -143,14 +145,15 @@ Widget Plant_Information(BuildContext context) {
                 ),
               ),
               const SizedBox(width: 10),
-               Container(
+              Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
@@ -189,11 +192,12 @@ Widget Plant_Information(BuildContext context) {
               Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
@@ -220,14 +224,15 @@ Widget Plant_Information(BuildContext context) {
                 ),
               ),
               const SizedBox(width: 10),
-               Container(
+              Container(
                 width: 180,
                 height: 160,
-                    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: const Color.fromARGB(153, 117, 40, 128), width: 0.1),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: const Color.fromARGB(153, 117, 40, 128),
+                      width: 0.1),
+                ),
                 child: InkWell(
                   onTap: () {
                     showDialog(
