@@ -8,9 +8,12 @@ class Help extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          body: Center(
-        child: botones(context),
-      )),
+        backgroundColor: const Color.fromARGB(
+            255, 253, 253, 253), // Color de fondo del Scaffold
+        body: Center(
+          child: botones(context),
+        ),
+      ),
     );
   }
 
@@ -19,7 +22,7 @@ class Help extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Container(
             width: 100,
             height: 80,
@@ -27,11 +30,30 @@ class Help extends StatelessWidget {
               image: DecorationImage(
                 image: AssetImage("imagenes/manual.gif"),
                 fit: BoxFit
-                    .cover, // Puedes ajustar esto para mantener la relación de aspecto
+                    .contain, // Puedes ajustar esto para mantener la relación de aspecto
               ),
             ),
+            /*   child: Stack(
+            children: [
+              Positioned(
+                top: 10,
+                left: 8,
+                right: 8,
+                child: Text(
+                  'MANUAL',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    backgroundColor: Colors.black.withOpacity(0.2),
+                  ),
+                ),
+              ),
+            ],
+          ),*/
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
           Container(
             width: 180,
             height: 40,
@@ -145,7 +167,7 @@ class Help extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
           Container(
             width: 180,
             height: 40,
@@ -236,7 +258,19 @@ class Help extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
+          Container(
+            width: 140,
+            height: 100,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("imagenes/tower.jpg"),
+                fit: BoxFit
+                    .contain, // Puedes ajustar esto para mantener la relación de aspecto
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
