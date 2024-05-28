@@ -67,10 +67,11 @@ Widget Menu(context) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                const SizedBox(height: 20),
                 ImganeRadio(),
                 const SizedBox(height: 20),
                 const Loge(),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
               ],
             ),
           ),

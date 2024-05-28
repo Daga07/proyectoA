@@ -15,11 +15,11 @@ class Tan_bars extends StatelessWidget {
         body: Column(
           children: <Widget>[
             TabBar(
-              dividerColor: Color.fromRGBO(3, 142, 255, 1),
+              dividerColor: Color.fromRGBO(253, 253, 253, 1),
               overlayColor:
-                  MaterialStatePropertyAll(Color.fromARGB(255, 225, 252, 216)),
+                  MaterialStatePropertyAll(Color.fromARGB(255, 217, 243, 239)),
               indicator:
-                  BoxDecoration(color: Color.fromARGB(255, 241, 216, 247)),
+                  BoxDecoration(color: Color.fromARGB(255, 237, 203, 245)),
               tabs: <Widget>[
                 Tab(
                   child: Image(image: AssetImage("imagenes/sensor.gif")),

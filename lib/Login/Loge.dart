@@ -14,7 +14,7 @@ class Loge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 280,
-      height: 300,
+      height: 230,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
         border: Border.all(
@@ -27,7 +27,7 @@ class Loge extends StatelessWidget {
             children: [
               Column(
                 children: <Widget>[
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
                   Container(
                     width: 50,
                     height: 50,
@@ -45,7 +45,7 @@ class Loge extends StatelessWidget {
               ),
               Column(
                 children: <Widget>[
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 30),
                   SizedBox(
                     width: 180,
                     height: 40,
