@@ -12,7 +12,7 @@ class Help extends StatelessWidget {
           color: const Color.fromARGB(255, 253, 253, 253), // Color de fondo
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: Color.fromARGB(255, 51, 243, 33), // Color del borde
+            color: const Color.fromARGB(255, 51, 243, 33), // Color del borde
             width: 1, // Grosor del borde
           ),
         ),

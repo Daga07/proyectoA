@@ -11,8 +11,8 @@ class Sensors extends StatelessWidget {
       home: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            border:
-                Border.all(color: Color.fromARGB(255, 51, 243, 33), width: 1)),
+            border: Border.all(
+                color: const Color.fromARGB(255, 51, 243, 33), width: 1)),
         child: Scaffold(
           body: Center(
             child: Screen_sensors(context),
@@ -20,19 +20,6 @@ class Sensors extends StatelessWidget {
         ),
       ),
     );
-
-    /*   return Container(
-      decoration: const BoxDecoration(
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 20),
-            Screen_sensors(),
-          ],
-        ),
-      ),
-    );*/
   }
 }
 
@@ -44,53 +31,59 @@ Widget Screen_sensors(BuildContext context) {
         const SizedBox(height: 10),
         Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 220,
-                  height: 180,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 158, 252, 8),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 220,
+                    height: 180,
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 158, 252, 8),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Container(
-                  width: 220,
-                  height: 180,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 128, 85, 65),
-                  ),
-                )
-              ],
+                  const SizedBox(width: 10),
+                  Container(
+                    width: 220,
+                    height: 180,
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 128, 85, 65),
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
         const SizedBox(height: 20),
         Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 220,
-                  height: 180,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 158, 252, 8),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 220,
+                    height: 180,
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 158, 252, 8),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Container(
-                  width: 220,
-                  height: 180,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 128, 85, 65),
-                  ),
-                )
-              ],
+                  const SizedBox(width: 10),
+                  Container(
+                    width: 220,
+                    height: 180,
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 128, 85, 65),
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
-        )
+        ),
       ],
     ),
   );
