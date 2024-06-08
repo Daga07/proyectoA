@@ -1,7 +1,6 @@
 // ignore: unused_import
-import 'dart:async';
-import 'dart:js_interop';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'dart:math' as math;
 
 class Sensors extends StatelessWidget {
@@ -13,7 +12,7 @@ class Sensors extends StatelessWidget {
       home: Container(
         child: Scaffold(
           body: Center(
-            child: AnimatedAlignExample(),
+            child: CrossFadeExample(),
           ),
         ),
       ),
@@ -21,53 +20,60 @@ class Sensors extends StatelessWidget {
   }
 }
 
-class AnimatedAlignExample extends StatefulWidget {
-  const AnimatedAlignExample({super.key});
+
+
+class CrossFadeExample extends StatefulWidget {
+  const CrossFadeExample({super.key});
 
   @override
-  State<AnimatedAlignExample> createState() => _AnimatedAlignExampleState();
+  // ignore: library_private_types_in_public_api
+  _CrossFadeExampleState createState() => _CrossFadeExampleState();
 }
 
-class _AnimatedAlignExampleState extends State<AnimatedAlignExample> {
-  bool selected = false;
+class _CrossFadeExampleState extends State<CrossFadeExample> {
+  bool _first = true;
 
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  void _startTimer() {
-    Timer(const Duration(seconds: 10), () {
-      setState(() {
-        selected = !selected;
-      });
-      _startTimer();
+  void _toggleCrossFade() {
+    setState(() {
+      _first = !_first;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _startTimer();
-      },
-      child: Center(
-        child: Container(
-          child: AnimatedAlign(
-              alignment:
-                  selected ? Alignment.bottomRight : Alignment.bottomLeft,
-              duration: const Duration(seconds: 10),
-              curve: Curves.fastOutSlowIn,
-              child: Image.asset('imagenes/paneta.png')),
-        ),
+    return Container(
+      width: 200,
+      height: 200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AnimatedCrossFade(
+            duration: const Duration(seconds: 3),
+            firstChild:  Image.asset("imagenes/lechuga.png"),
+            secondChild:
+                 Column(
+                     children: <Widget>[
+                      Text("Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes"),
+                     ]  
+                                      
+                 ),
+                
+                
+            crossFadeState:
+                _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: _toggleCrossFade,
+            child: const Text('Lechugas'),
+          ),
+        ],
       ),
     );
   }
 }
 
 
-/*
 // ignore: non_constant_identifier_names
 Widget Screen_sensors(BuildContext context) {
   return SingleChildScrollView(
@@ -133,4 +139,3 @@ Widget Screen_sensors(BuildContext context) {
     ),
   );
 }
-*/
