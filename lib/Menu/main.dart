@@ -1,5 +1,7 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:proyecto/Animacion/Animacion.dart';
 // ignore: unused_import
 import 'package:proyecto/Help_user/Help.dart';
 import 'package:proyecto/Login/Loge.dart';
@@ -69,7 +71,7 @@ Widget Menu(context) {
               children: <Widget>[
                 const SizedBox(height: 20),
                 ImganeRadio(),
-                const SizedBox(height: 20),
+                Animation(),
                 const Loge(),
                 const SizedBox(height: 20),
               ],
@@ -83,7 +85,7 @@ Widget Menu(context) {
 
 Widget ImganeRadio() {
   return Container(
-    width: 140,
+    width: 130,
     height: 110,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
@@ -95,4 +97,12 @@ Widget ImganeRadio() {
         image: AssetImage("imagenes/towerucev.png"), fit: BoxFit.contain),
   );
 }
+
 //record
+Widget Animation() {
+  return Container(
+    width: 200,
+    height: 25,
+    child: Animacion(),
+  );
+}

@@ -1,6 +1,8 @@
 // ignore: unused_import
+import 'dart:async';
 import 'dart:js_interop';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class Sensors extends StatelessWidget {
   const Sensors({super.key});
@@ -9,13 +11,9 @@ class Sensors extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(
-                color: const Color.fromARGB(255, 51, 243, 33), width: 1)),
         child: Scaffold(
           body: Center(
-            child: Screen_sensors(context),
+            child: AnimatedAlignExample(),
           ),
         ),
       ),
@@ -23,6 +21,53 @@ class Sensors extends StatelessWidget {
   }
 }
 
+class AnimatedAlignExample extends StatefulWidget {
+  const AnimatedAlignExample({super.key});
+
+  @override
+  State<AnimatedAlignExample> createState() => _AnimatedAlignExampleState();
+}
+
+class _AnimatedAlignExampleState extends State<AnimatedAlignExample> {
+  bool selected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    Timer(const Duration(seconds: 10), () {
+      setState(() {
+        selected = !selected;
+      });
+      _startTimer();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _startTimer();
+      },
+      child: Center(
+        child: Container(
+          child: AnimatedAlign(
+              alignment:
+                  selected ? Alignment.bottomRight : Alignment.bottomLeft,
+              duration: const Duration(seconds: 10),
+              curve: Curves.fastOutSlowIn,
+              child: Image.asset('imagenes/paneta.png')),
+        ),
+      ),
+    );
+  }
+}
+
+
+/*
 // ignore: non_constant_identifier_names
 Widget Screen_sensors(BuildContext context) {
   return SingleChildScrollView(
@@ -88,3 +133,4 @@ Widget Screen_sensors(BuildContext context) {
     ),
   );
 }
+*/
