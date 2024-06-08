@@ -10,7 +10,7 @@ class Sensors extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
-        child: Scaffold(
+        child: const Scaffold(
           body: Center(
             child: CrossFadeExample(),
           ),
@@ -19,8 +19,6 @@ class Sensors extends StatelessWidget {
     );
   }
 }
-
-
 
 class CrossFadeExample extends StatefulWidget {
   const CrossFadeExample({super.key});
@@ -42,27 +40,28 @@ class _CrossFadeExampleState extends State<CrossFadeExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 200,
+      width: 120,
+      height: 170,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: const Color.fromARGB(255, 202, 255, 11),
+            width: 0.2,
+          )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedCrossFade(
             duration: const Duration(seconds: 3),
-            firstChild:  Image.asset("imagenes/lechuga.png"),
-            secondChild:
-                 Column(
-                     children: <Widget>[
-                      Text("Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes"),
-                     ]  
-                                      
-                 ),
-                
-                
+            firstChild: Image.asset("imagenes/lechuga.png"),
+            secondChild: const Column(children: <Widget>[
+              const Text(
+                  "Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes"),
+            ]),
             crossFadeState:
                 _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 2),
           ElevatedButton(
             onPressed: _toggleCrossFade,
             child: const Text('Lechugas'),
@@ -72,7 +71,6 @@ class _CrossFadeExampleState extends State<CrossFadeExample> {
     );
   }
 }
-
 
 // ignore: non_constant_identifier_names
 Widget Screen_sensors(BuildContext context) {
