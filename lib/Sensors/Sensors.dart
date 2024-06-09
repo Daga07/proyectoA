@@ -55,7 +55,7 @@ class _CrossFadeExampleState extends State<CrossFadeExample> {
             duration: const Duration(seconds: 3),
             firstChild: Image.asset("imagenes/lechuga.png"),
             secondChild: const Column(children: <Widget>[
-              const Text(
+               Text(
                   "Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes"),
             ]),
             crossFadeState:

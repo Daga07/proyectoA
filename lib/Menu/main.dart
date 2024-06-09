@@ -23,10 +23,12 @@ class Tower extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(),
-        home: Menu(context),
+      child: Flexible(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(),
+          home: Menu(context),
+        ),
       ),
     );
   }
