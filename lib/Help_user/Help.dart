@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Help extends StatelessWidget {
   const Help({super.key});
@@ -38,8 +39,7 @@ class Help extends StatelessWidget {
             height: 90,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                  color: const Color.fromARGB(255, 215, 252, 10), width: 0.5),
+             
               image: const DecorationImage(
                   image: AssetImage("imagenes/manual.gif"),
                   fit: BoxFit
@@ -56,8 +56,7 @@ class Help extends StatelessWidget {
               height: 112,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: const Color.fromARGB(255, 38, 250, 162), width: 0.2),
+               
                 image: const DecorationImage(
                     image: AssetImage("imagenes/tower.jpg"),
                     fit: BoxFit
@@ -179,8 +178,7 @@ class Help extends StatelessWidget {
               height: 112,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: const Color.fromARGB(255, 38, 225, 250), width: 0.2),
+              
                 image: const DecorationImage(
                     image: AssetImage("imagenes/app.png"),
                     fit: BoxFit
@@ -270,23 +268,38 @@ class Help extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Container(
-            width: 230,
-            height: 80,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                  color: const Color.fromARGB(255, 120, 240, 109), width: 0.2),
-              image: const DecorationImage(
-                  image: AssetImage("imagenes/uceva.png"),
-                  fit: BoxFit
-                      .contain // Puedes ajustar esto para mantener la relación de aspecto
-                  ),
-            ),
+         
+             Container(
+              width: 230,
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    color: const Color.fromARGB(255, 120, 240, 109), width: 0.2),
+                image: const DecorationImage(
+                    image: AssetImage("imagenes/uceva.png"),
+                    fit: BoxFit
+                        .contain // Puedes ajustar esto para mantener la relación de aspecto
+                    ),
+              ),
+              child: InkWell(
+            onTap: () async {
+              const url = 'https://www.uceva.edu.co/facultad-de-ingenieria/ingenieria-de-sistemas/';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+        
           ),
+        ),
           const SizedBox(height: 20),
         ],
       ),
     );
+    
   }
 }
+
+

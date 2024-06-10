@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto/Help_user/Help.dart';
 import 'package:proyecto/Plant/Plant.dart';
-import 'package:proyecto/Sensors/Sensors.dart';
+
+import '../Sensors/Sensors.dart';
 
 // ignore: camel_case_types
 class Tan_bars extends StatelessWidget {

@@ -1,7 +1,6 @@
-// ignore: unused_import
+// ignore_for_file: file_names, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'dart:math' as math;
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Sensors extends StatelessWidget {
   const Sensors({super.key});
@@ -10,130 +9,277 @@ class Sensors extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
-        child: const Scaffold(
-          body: Center(
-            child: CrossFadeExample(),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 253, 253, 253), // Color de fondo
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: const Color.fromARGB(255, 51, 243, 33), // Color del borde
+            width: 1, // Grosor del borde
           ),
         ),
+        child: Scaffold(
+          // ignore: duplicate_ignore
+          // ignore: avoid_unnecessary_containers
+          body: Container(
+            child: const Center(child: Sensor()),
+          ),
+        ),
+        // Color de fondo del Scaffold
       ),
     );
   }
 }
 
-class CrossFadeExample extends StatefulWidget {
-  const CrossFadeExample({super.key});
+class Sensor extends StatefulWidget {
+  const Sensor({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _CrossFadeExampleState createState() => _CrossFadeExampleState();
+  _SensorState createState() => _SensorState();
 }
 
-class _CrossFadeExampleState extends State<CrossFadeExample> {
-  bool _first = true;
-
-  void _toggleCrossFade() {
-    setState(() {
-      _first = !_first;
-    });
-  }
+class _SensorState extends State<Sensor> {
+  double temnumero = 45;
+  double Temperatura = 60;
+  double Humedad = 50;
 
   @override
+
+  // ignore: non_constant_identifier_names
   Widget build(BuildContext context) {
-    return Container(
-      width: 120,
-      height: 170,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: const Color.fromARGB(255, 202, 255, 11),
-            width: 0.2,
-          )),
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AnimatedCrossFade(
-            duration: const Duration(seconds: 3),
-            firstChild: Image.asset("imagenes/lechuga.png"),
-            secondChild: const Column(children: <Widget>[
-               Text(
-                  "Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes"),
-            ]),
-            crossFadeState:
-                _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          Tooltip(
+              message: "TEMPERATURA",
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("imagenes/temperatura.gif"),
+                      fit: BoxFit.contain),
+                ),
+              )
+              ),
+          const SizedBox(height: 15),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: Colors.black, width: 0.2),
+                      ),
+                      child: SfLinearGauge(
+                        minimum: 0,
+                        maximum: 80,
+                        interval: 5,
+                        ranges: const <LinearGaugeRange>[
+                          LinearGaugeRange(
+                            startValue: 0,
+                            endValue: 26.6,
+                            color: Color.fromARGB(255, 9, 255, 0),
+                          ),
+                          LinearGaugeRange(
+                            startValue: 26.6,
+                            endValue: 53.3,
+                            color: Color.fromARGB(255, 251, 255, 0),
+                          ),
+                          LinearGaugeRange(
+                            startValue: 53.3,
+                            endValue: 80,
+                            color: Color.fromARGB(255, 255, 0, 0),
+                          ),
+                        ],
+                        markerPointers: <LinearMarkerPointer>[
+                          LinearShapePointer(
+                            value: temnumero,
+                            shapeType: LinearShapePointerType.invertedTriangle,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 2),
-          ElevatedButton(
-            onPressed: _toggleCrossFade,
-            child: const Text('Lechugas'),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 220,
+                          height: 220,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black, width: 0.2),
+                          ),
+                          child: SfRadialGauge(
+                            axes: <RadialAxis>[
+                              RadialAxis(
+                                minimum: 0,
+                                maximum: 100.1,
+                                interval: 5,
+                                ranges: <GaugeRange>[
+                                  GaugeRange(
+                                    startValue: 0,
+                                    endValue: 33,
+                                    color: const Color.fromARGB(255, 9, 255, 0),
+                                  ),
+                                  GaugeRange(
+                                    startValue: 33,
+                                    endValue: 66,
+                                    color:
+                                        const Color.fromARGB(255, 251, 255, 0),
+                                  ),
+                                  GaugeRange(
+                                    startValue: 66,
+                                    endValue: 100,
+                                    color: const Color.fromARGB(255, 255, 0, 0),
+                                  ),
+                                ],
+                                pointers: <GaugePointer>[
+                                  NeedlePointer(value: Humedad),
+                                ],
+                                annotations: <GaugeAnnotation>[
+                                  // ignore: duplicate_ignore
+                                  // ignore: avoid_unnecessary_containers
+                                  GaugeAnnotation(
+                                    widget: Container(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            Humedad.toString(),
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          const Text(
+                                            "HUMEDAD",
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    angle: 90,
+                                    positionFactor: 0.5,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: 10),
+               Container(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 220,
+                        height: 220,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.black, width: 0.2),
+                        ),
+                        child: SfRadialGauge(
+                          axes: <RadialAxis>[
+                            RadialAxis(
+                              minimum: 0,
+                              maximum: 100.1,
+                              interval: 5,
+                              ranges: <GaugeRange>[
+                                GaugeRange(
+                                  startValue: 0,
+                                  endValue: 33,
+                                  color: const Color.fromARGB(255, 9, 255, 0),
+                                ),
+                                GaugeRange(
+                                  startValue: 33,
+                                  endValue: 66,
+                                  color: const Color.fromARGB(255, 251, 255, 0),
+                                ),
+                                GaugeRange(
+                                  startValue: 66,
+                                  endValue: 100,
+                                  color: const Color.fromARGB(255, 255, 0, 0),
+                                ),
+                              ],
+                              pointers: <GaugePointer>[
+                                NeedlePointer(value: Temperatura),
+                              ],
+                              annotations: <GaugeAnnotation>[
+                                // ignore: duplicate_ignore
+                                // ignore: avoid_unnecessary_containers
+                                GaugeAnnotation(
+                                  widget: Container(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          Temperatura.toString(),
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const Text(
+                                          "TEMPERATURA",
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  angle: 90,
+                                  positionFactor: 0.5,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+            ],
           ),
+          const SizedBox(height: 20),
+         
         ],
       ),
     );
   }
-}
-
-// ignore: non_constant_identifier_names
-Widget Screen_sensors(BuildContext context) {
-  return SingleChildScrollView(
-    child: Column(
-      children: [
-        const SizedBox(height: 10),
-        Column(
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 220,
-                    height: 180,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 158, 252, 8),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Container(
-                    width: 220,
-                    height: 180,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 128, 85, 65),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 20),
-        Column(
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 220,
-                    height: 180,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 158, 252, 8),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Container(
-                    width: 220,
-                    height: 180,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 128, 85, 65),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
 }
