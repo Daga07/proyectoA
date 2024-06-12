@@ -80,6 +80,7 @@ class _PlantInformationState extends State<PlantInformation> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Column(
         children: <Widget>[
           Column(
