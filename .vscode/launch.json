@@ -4,20 +4,33 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+<<<<<<< HEAD
+        {
+            "name": "proyectoA",
+=======
         
         {
             "name": "proyecto",
+>>>>>>> a2ae66150393d042522fa9dd3731cf5a61e4691f
             "request": "launch",
             "type": "dart"
         },
         {
+<<<<<<< HEAD
+            "name": "proyectoA (profile mode)",
+=======
             "name": "proyecto (profile mode)",
+>>>>>>> a2ae66150393d042522fa9dd3731cf5a61e4691f
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
+<<<<<<< HEAD
+            "name": "proyectoA (release mode)",
+=======
             "name": "proyecto (release mode)",
+>>>>>>> a2ae66150393d042522fa9dd3731cf5a61e4691f
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

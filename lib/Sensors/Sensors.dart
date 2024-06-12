@@ -41,9 +41,9 @@ class Sensor extends StatefulWidget {
 }
 
 class _SensorState extends State<Sensor> {
-  double temnumero = 45;
-  double Temperatura = 60;
+  double Temperatura = 100;
   double Humedad = 50;
+  double Nivel = 90;
 
   @override
 
@@ -55,161 +55,9 @@ class _SensorState extends State<Sensor> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 20),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 200,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.black, width: 0.1),
-                    ),
-                    child: SfRadialGauge(
-                      axes: <RadialAxis>[
-                        RadialAxis(
-                          minimum: 0,
-                          maximum: 100.1,
-                          interval: 5,
-                          ranges: <GaugeRange>[
-                            GaugeRange(
-                              startValue: 0,
-                              endValue: 33,
-                              color: const Color.fromARGB(255, 9, 255, 0),
-                            ),
-                            GaugeRange(
-                              startValue: 33,
-                              endValue: 66,
-                              color: const Color.fromARGB(255, 251, 255, 0),
-                            ),
-                            GaugeRange(
-                              startValue: 66,
-                              endValue: 100,
-                              color: const Color.fromARGB(255, 255, 0, 0),
-                            ),
-                          ],
-                          pointers: <GaugePointer>[
-                            NeedlePointer(value: Humedad),
-                          ],
-                          annotations: <GaugeAnnotation>[
-                            // ignore: duplicate_ignore
-                            // ignore: avoid_unnecessary_containers
-                            GaugeAnnotation(
-                              widget: Container(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      Humedad.toString(),
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const Text(
-                                      "HUMEDAD",
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              angle: 90,
-                              positionFactor: 0.5,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
           Container(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        width: 180,
-                        height: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.black, width: 0.1),
-                        ),
-                        child: SfRadialGauge(
-                          axes: <RadialAxis>[
-                            RadialAxis(
-                              minimum: 0,
-                              maximum: 100.1,
-                              interval: 5,
-                              ranges: <GaugeRange>[
-                                GaugeRange(
-                                  startValue: 0,
-                                  endValue: 33,
-                                  color: const Color.fromARGB(255, 9, 255, 0),
-                                ),
-                                GaugeRange(
-                                  startValue: 33,
-                                  endValue: 66,
-                                  color: const Color.fromARGB(255, 251, 255, 0),
-                                ),
-                                GaugeRange(
-                                  startValue: 66,
-                                  endValue: 100,
-                                  color: const Color.fromARGB(255, 255, 0, 0),
-                                ),
-                              ],
-                              pointers: <GaugePointer>[
-                                NeedlePointer(value: Temperatura),
-                              ],
-                              annotations: <GaugeAnnotation>[
-                                // ignore: duplicate_ignore
-                                // ignore: avoid_unnecessary_containers
-                                GaugeAnnotation(
-                                  widget: Container(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          Temperatura.toString(),
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const Text(
-                                          "TEMPERATURA",
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  angle: 90,
-                                  positionFactor: 0.5,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 15),
-          Container(
-            width: 280,
-            height: 280,
+            width: 230,
+            height: 230,
             child: SfRadialGauge(axes: <RadialAxis>[
               RadialAxis(
                   minimum: 0,
@@ -226,14 +74,146 @@ class _SensorState extends State<Sensor> {
                       //  endWidth: 10,
                     ),
                   ],
-                  pointers: const <GaugePointer>[
+                  pointers: <GaugePointer>[
                     RangePointer(
-                      value: 50,
+                      value: Humedad,
                       width: 14, // Ancho del rango
                       //   sizeUnit: GaugeSizeUnit.factor,
                       enableAnimation: true,
                       animationDuration: 1200,
-                      gradient: SweepGradient(
+                      gradient: const SweepGradient(
+                        colors: <Color>[
+                          Color.fromARGB(255, 113, 215, 233),
+                          Color.fromARGB(255, 3, 115, 243),
+                        ],
+                        stops: <double>[0.15, 0.75],
+                      ),
+                    ),
+                  ],
+                  annotations: <GaugeAnnotation>[
+                    GaugeAnnotation(
+                      widget: Container(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '${Humedad.toString()}%',
+                              style: const TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "HUMEDAD",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            Image.asset(
+                              'imagenes/humedad.gif',
+                              width: 40,
+                              height: 40,
+                            ),
+                          ],
+                        ),
+                      ),
+                      angle: 90,
+                      positionFactor: 0.5,
+                    )
+                  ])
+            ]),
+          ),
+          const SizedBox(height: 15),
+          Container(
+            width: 230,
+            height: 230,
+            child: SfRadialGauge(axes: <RadialAxis>[
+              RadialAxis(
+                  minimum: 0,
+                  maximum: 100.1,
+                  interval: 5,
+                  //  startAngle: 0,
+                  //  endAngle: 360,
+                  ranges: <GaugeRange>[
+                    GaugeRange(
+                      startValue: 0,
+                      endValue: 100,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      //  startWidth: 5,
+                      //  endWidth: 10,
+                    ),
+                  ],
+                  pointers: <GaugePointer>[
+                    RangePointer(
+                      value: Temperatura,
+                      width: 14, // Ancho del rango
+                      //   sizeUnit: GaugeSizeUnit.factor,
+                      enableAnimation: true,
+                      animationDuration: 1200,
+                      gradient: const SweepGradient(
+                        colors: <Color>[
+                          Color.fromARGB(255, 211, 233, 113),
+                          Color.fromARGB(255, 243, 39, 3),
+                        ],
+                        stops: <double>[0.15, 0.75],
+                      ),
+                    ),
+                  ],
+                  annotations: <GaugeAnnotation>[
+                    GaugeAnnotation(
+                      widget: Container(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '${Temperatura.toString()}%',
+                              style: const TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "TEMPERATURA",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            Image.asset(
+                              'imagenes/temperatura.gif',
+                              width: 40,
+                              height: 40,
+                            ),
+                          ],
+                        ),
+                      ),
+                      angle: 90,
+                      positionFactor: 0.5,
+                    )
+                  ])
+            ]),
+          ),
+          const SizedBox(height: 15),
+          Container(
+            width: 230,
+            height: 230,
+            child: SfRadialGauge(axes: <RadialAxis>[
+              RadialAxis(
+                  minimum: 0,
+                  maximum: 100.1,
+                  interval: 5,
+                  //  startAngle: 0,
+                  //  endAngle: 360,
+                  ranges: <GaugeRange>[
+                    GaugeRange(
+                      startValue: 0,
+                      endValue: 100,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      //  startWidth: 5,
+                      //  endWidth: 10,
+                    ),
+                  ],
+                  pointers: <GaugePointer>[
+                    RangePointer(
+                      value: Nivel,
+                      width: 14, // Ancho del rango
+                      //   sizeUnit: GaugeSizeUnit.factor,
+                      enableAnimation: true,
+                      animationDuration: 1200,
+                      gradient: const SweepGradient(
                         colors: <Color>[
                           Color.fromARGB(255, 113, 175, 233),
                           Color.fromARGB(255, 8, 1, 75),
@@ -249,20 +229,19 @@ class _SensorState extends State<Sensor> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              Humedad.toString(),
+                              '${Nivel.toString()}%',
                               style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                             const Text(
                               "NIVEL DE AGUA",
                               style: TextStyle(
-                                fontSize: 10,
-                              ),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                             Image.asset(
-                              '',
-                              width: 50,
-                              height: 80,
+                              'imagenes/agua.gif',
+                              width: 40,
+                              height: 40,
                             ),
                           ],
                         ),
