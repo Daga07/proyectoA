@@ -22,69 +22,59 @@ class Tower extends StatelessWidget {
   const Tower({super.key});
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Flexible(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(),
-          home: Menu(context),
-        ),
+    return Flexible(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(),
+        home: Menu(context),
       ),
     );
   }
 }
 
 Widget Menu(context) {
-  return SingleChildScrollView(
-    child: Expanded(
-      child: Scaffold(
-        appBar: PreferredSize(
-          // Altura personalizada del AppBar
-          preferredSize:
-              const Size.fromHeight(20), // Altura personalizada del AppBar
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                bottom:
-                    Radius.circular(10), // Radio de borde en la parte inferior
-              ),
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(248, 53, 119, 51),
-                  Color.fromARGB(167, 160, 61, 122)
-                ], // Colores del degradado
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: AppBar(
-              backgroundColor: const Color.fromARGB(
-                  0, 102, 10, 10), // Hace que el AppBar sea transparente
-              elevation: 0, // Elimina la sombra del AppBar
-            ),
+  return Scaffold(
+    appBar: PreferredSize(
+      // Altura personalizada del AppBar
+      preferredSize:
+          const Size.fromHeight(20), // Altura personalizada del AppBar
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10), // Radio de borde en la parte inferior
+          ),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(248, 53, 119, 51),
+              Color.fromARGB(167, 160, 61, 122)
+            ], // Colores del degradado
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            color:
-                Color.fromARGB(255, 255, 255, 255), // Color de fondo del cuerpo
-          ),
-          child: Center(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const SizedBox(height: 20),
-                    ImganeRadio(),
-                    Animation(),
-                    const Loge(),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            ),
+        child: AppBar(
+          backgroundColor: const Color.fromARGB(
+              0, 102, 10, 10), // Hace que el AppBar sea transparente
+          elevation: 0, // Elimina la sombra del AppBar
+        ),
+      ),
+    ),
+    body: Container(
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 255, 255, 255), // Color de fondo del cuerpo
+      ),
+      child: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              ImganeRadio(),
+              Animation(),
+              const Loge(),
+              const SizedBox(height: 20),
+            ],
           ),
         ),
       ),
