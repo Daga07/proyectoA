@@ -44,9 +44,16 @@ class _SensorState extends State<Sensor> {
   double Temperatura = 100;
   double Humedad = 50;
   double Nivel = 90;
+  var _luz = 0;
+
+  void _clicluz() {
+    setState(() {
+      _luz = _luz == 0 ? 1 : 0;
+    });
+    print('LUZ PRENDE: $_luz');
+  }
 
   @override
-
   // ignore: non_constant_identifier_names
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -54,7 +61,48 @@ class _SensorState extends State<Sensor> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          /*  child: Container(
+                  child: _luz == 0
+                      ? const Icon(Icons.lightbulb_outline, size: 20)
+                      : const Image(
+                          image: AssetImage('imagenes/luz.gif'),
+                          fit: BoxFit.contain,
+                        ),
+                ) */
+
           const SizedBox(height: 20),
+          Container(
+              child: Column(
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: _clicluz,
+                // ignore: sort_child_properties_last
+                child: Tooltip(
+                  // ignore: sort_child_properties_last
+                  child: _luz == 0
+                      ? const Icon(
+                          Icons.lightbulb_outline,
+                          size: 25,
+                        )
+                      : const Icon(
+                          Icons.lightbulb_rounded,
+                          size: 30,
+                          color: Color.fromARGB(255, 233, 231, 142),
+                        ),
+                  message: _luz == 0 ? 'ENCENDER' : 'APAGAR',
+                  textStyle: const TextStyle(
+                    fontSize: 11,
+                  ),
+                ),
+
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 213, 240, 211),
+                    elevation: 10,
+                    shadowColor: const Color.fromARGB(255, 213, 240, 211)),
+              )
+            ],
+          )),
+          const SizedBox(height: 30),
           Container(
             width: 230,
             height: 230,
