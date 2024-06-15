@@ -72,7 +72,7 @@ Widget Menu(context) {
               const SizedBox(height: 20),
               ImganeRadio(),
               Animation(),
-              const Loge(),
+              Loge(),
               const SizedBox(height: 20),
             ],
           ),
