@@ -1,16 +1,15 @@
-// ignore_for_file: file_names
-
+// ignore_for_file: file_names, non_constant_identifier_names, unused_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-// ignore: unused_import
 import 'package:proyecto/Help_user/Help.dart';
 import 'package:proyecto/Record/Record.dart';
-
-import '../Tab_bars/Tab_bars.dart';
+import '/Tab_bars/Tab_bars.dart';
 
 class Loge extends StatefulWidget {
+  const Loge({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LogeState createState() => _LogeState();
 }
 
@@ -21,8 +20,8 @@ class _LogeState extends State<Loge> {
   bool _Error = false;
   String mensaje = '';
   double _width = 280;
-  double _height = 230;
-  double _size = 0;
+  double _height = 220;
+  double _size = 20;
   Color _colores = Colors.grey;
   bool _isExpanded = false;
 
@@ -34,7 +33,7 @@ class _LogeState extends State<Loge> {
   }
 
   void _showErrorMessage() {
-    Future.delayed(const Duration(milliseconds: 1700), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       //tiempo que en tarde en abrir el mensaje de error
       setState(() {
         _Error = true;
@@ -49,24 +48,25 @@ class _LogeState extends State<Loge> {
     });
   }
 
-  // ignore: non_constant_identifier_names
   void _Sizebox() {
-    // tiempo que tarda en abrir el container animado
-    setState(() {
-      _isExpanded = !_isExpanded;
-      _width = _width == 280 ? 280 : 280;
-      _height = _height == 230 ? 290 : 230;
-      _size = _size == 0 ? 25 : 0;
-      _colores = _isExpanded ? Colors.red : Colors.grey;
-    });
-    Future.delayed(const Duration(milliseconds: 2900), () {
-      // tiempo que tarda en cerrar el container animado
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      // tiempo que tarda en abrir el container animado
       setState(() {
         _isExpanded = !_isExpanded;
-        _width = _width == 280 ? 270 : 280;
-        _height = _height == 230 ? 290 : 230;
-        _size = _size == 0 ? 25 : 0;
+        _width = _width == 280 ? 280 : 280;
+        _height = _height == 220 ? 245 : 220;
+        _size = _size == 20 ? 0 : 20;
         _colores = _isExpanded ? Colors.red : Colors.grey;
+      });
+      Future.delayed(const Duration(milliseconds: 2000), () {
+        // tiempo que tarda en cerrar el container animado
+        setState(() {
+          _isExpanded = !_isExpanded;
+          _width = _width == 280 ? 280 : 280;
+          _height = _height == 220 ? 245 : 220;
+          _size = _size == 20 ? 0 : 20;
+          _colores = _isExpanded ? Colors.red : Colors.grey;
+        });
       });
     });
   }
@@ -78,13 +78,11 @@ class _LogeState extends State<Loge> {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          AnimatedContainer(
+          Container(
             width: _width,
             height: _height,
-            duration: const Duration(
-                milliseconds:
-                    1699), // tiempo que tarda en abrir el container animado
-            curve: Curves.linear,
+            // tiempo que tarda en abrir el container animado
+
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               border: Border.all(
@@ -151,7 +149,6 @@ class _LogeState extends State<Loge> {
                     ),
                   ],
                 ),
-                SizedBox(height: _size),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -165,7 +162,6 @@ class _LogeState extends State<Loge> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        const SizedBox(height: 30),
                         Container(
                           width: 50,
                           height: 50,
@@ -183,7 +179,7 @@ class _LogeState extends State<Loge> {
                     ),
                     Column(
                       children: <Widget>[
-                        const SizedBox(height: 30),
+                        SizedBox(height: _size),
                         SizedBox(
                           width: 180,
                           height: 40,
@@ -329,12 +325,12 @@ class _LogeState extends State<Loge> {
                   'CAMPOS VACIOS',
                   style: TextStyle(
                     color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 20,
-                    fontFamily: AutofillHints.url,
+                    fontSize: 15,
+                    fontFamily: AutofillHints.creditCardFamilyName,
                   ),
                 ),
                 Icon(
-                  Icons.error,
+                  Icons.error_rounded,
                   color: Colors.red,
                   size: 25,
                 )
