@@ -1,4 +1,5 @@
-// ignore_for_file: file_names, non_constant_identifier_names, unused_import
+// ignore_for_file: file_names, non_constant_identifier_names, unused_import, unnecessary_const
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto/Help_user/Help.dart';
@@ -17,11 +18,7 @@ class _LogeState extends State<Loge> {
   // Create TextEditingController instances
   final TextEditingController _User = TextEditingController();
   final TextEditingController _Log = TextEditingController();
-  bool _Error = false;
-  String mensaje = '';
-  double _width = 280;
-  double _height = 220;
-  double _size = 20;
+
   Color _colores = Colors.grey;
   bool _isExpanded = false;
 
@@ -32,39 +29,17 @@ class _LogeState extends State<Loge> {
     super.dispose();
   }
 
-  void _showErrorMessage() {
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      //tiempo que en tarde en abrir el mensaje de error
-      setState(() {
-        _Error = true;
-      });
-
-      Future.delayed(const Duration(milliseconds: 2000), () {
-        // tiempo que se tarda en cerra el error
-        setState(() {
-          _Error = false;
-        });
-      });
-    });
-  }
-
   void _Sizebox() {
     Future.delayed(const Duration(milliseconds: 1000), () {
       // tiempo que tarda en abrir el container animado
       setState(() {
         _isExpanded = !_isExpanded;
-        _width = _width == 280 ? 280 : 280;
-        _height = _height == 220 ? 245 : 220;
-        _size = _size == 20 ? 0 : 20;
         _colores = _isExpanded ? Colors.red : Colors.grey;
       });
       Future.delayed(const Duration(milliseconds: 2000), () {
         // tiempo que tarda en cerrar el container animado
         setState(() {
           _isExpanded = !_isExpanded;
-          _width = _width == 280 ? 280 : 280;
-          _height = _height == 220 ? 245 : 220;
-          _size = _size == 20 ? 0 : 20;
           _colores = _isExpanded ? Colors.red : Colors.grey;
         });
       });
@@ -79,8 +54,8 @@ class _LogeState extends State<Loge> {
         alignment: Alignment.center,
         children: <Widget>[
           Container(
-            width: _width,
-            height: _height,
+            width: 280,
+            height: 220,
             // tiempo que tarda en abrir el container animado
 
             decoration: BoxDecoration(
@@ -150,14 +125,6 @@ class _LogeState extends State<Loge> {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      child: error(),
-                    )
-                  ],
-                ),
-                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Column(
@@ -179,7 +146,7 @@ class _LogeState extends State<Loge> {
                     ),
                     Column(
                       children: <Widget>[
-                        SizedBox(height: _size),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: 180,
                           height: 40,
@@ -232,7 +199,8 @@ class _LogeState extends State<Loge> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Record()),
+                              builder: (context) => const Record(),
+                            ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -268,14 +236,10 @@ class _LogeState extends State<Loge> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_Log.text.isNotEmpty && _User.text.isNotEmpty) {
-                            print('usuario:${_User.text}');
-                            print('contra:${_Log.text}');
+                            concide();
                           } else {
-                            print('campo vasio');
-                            setState(() {
-                              _showErrorMessage();
-                              _Sizebox();
-                            });
+                            error();
+                            _Sizebox();
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -311,35 +275,178 @@ class _LogeState extends State<Loge> {
   }
 
   Widget error() {
-    if (_Error) {
-      return Positioned(
-        left: 1,
-        top: 1,
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(1),
-            color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.8),
-            child: const Column(
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
+        Future.delayed(const Duration(seconds: 3), () {
+          ;
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          }
+        });
+        return Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                color: Colors.red,
+                // Color intermedio para la línea superior
+                width: 1.0,
+              ),
+            ),
+          ),
+          height: 120,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                  'CAMPOS VACIOS',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 15,
-                    fontFamily: AutofillHints.creditCardFamilyName,
-                  ),
+                Column(
+                  children: <Widget>[
+                    const Text(
+                      'CAMPOS VACÍOS',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontFamily: AutofillHints.addressCity),
+                    ),
+                    Image.asset(
+                      'imagenes/error.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.error_rounded,
-                  color: Colors.red,
-                  size: 25,
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Time(),
+                    )
+                  ],
                 )
               ],
             ),
           ),
-        ),
-      );
-    }
-    return Container(); // Retorna un container vacío si no hay error
+        );
+      },
+    );
+    return Container();
+  }
+
+  Widget concide() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(context)) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Tan_bars()),
+            );
+          }
+        });
+        return Container(
+          decoration: const BoxDecoration(
+              border: Border(
+            bottom: BorderSide(
+              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+              color: Colors.black,
+              width: 1.0,
+            ),
+          )),
+          height: 100,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    const Text(
+                      'USUARIO REGISTRADO CON ÉXITO',
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 2, 2, 2),
+                          fontSize: 20,
+                          fontFamily: AutofillHints.addressCity),
+                    ),
+                    Image.asset(
+                      'imagenes/employee.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    return Container();
   }
 }
+
+class Time extends StatefulWidget {
+  @override
+  _TimeState createState() => _TimeState();
+}
+
+class _TimeState extends State<Time> {
+  int segundos = 3;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    iniciarTimer();
+  }
+
+  void iniciarTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (segundos > 0) {
+          segundos--;
+        } else {
+          timer.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Tiempo restante: $segundos segundos',
+        style: TextStyle(fontSize: 10),
+      ),
+    );
+  }
+}
+
+
+ /* gradient: LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [
+        Colors.red, // Color inicial del degradado para la línea superior
+        Colors.blue, // Color final del degradado para la línea superior
+      ],
+    ), // colores en contenerdor unidos */
+
+    /* left: BorderSide(
+                color: Colors.black,
+                width: 1.0,
+              ),
+             right: BorderSide(
+                color: Colors.black,
+                width: 1.0,
+              ), // liena de color en un contenar al fina, el pricipio, derecha o izquirda */

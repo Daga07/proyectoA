@@ -1,5 +1,6 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_final_fields
 import 'package:flutter/material.dart';
+import 'package:proyecto/Menu/main.dart';
 // ignore: unused_import
 import 'package:proyecto/Tab_bars/Tab_bars.dart';
 
@@ -25,8 +26,6 @@ class _RecordState extends State<Record> {
   ];
   double _width = 280;
   double _height = 470;
-  bool _Error = false;
-  bool _Errorcontra = false;
   bool _isExpanded = false;
   Color _colores = Colors.grey;
 
@@ -45,51 +44,15 @@ class _RecordState extends State<Record> {
     super.dispose();
   }
 
-  void _showErrorMessage() {
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      //tiempo que en tarde en abrir el mensaje de error
-      setState(() {
-        _Error = true;
-      });
-
-      Future.delayed(const Duration(milliseconds: 2000), () {
-        // tiempo que se tarda en cerra el error
-        setState(() {
-          _Error = false;
-        });
-      });
-    });
-  }
-
-  void _showErrorContrasena() {
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      //tiempo que en tarde en abrir el mensaje de error
-      setState(() {
-        _Errorcontra = true;
-      });
-
-      Future.delayed(const Duration(milliseconds: 2000), () {
-        // tiempo que se tarda en cerra el error
-        setState(() {
-          _Errorcontra = false;
-        });
-      });
-    });
-  }
-
-  void _Sizebox() {
-    Future.delayed(const Duration(milliseconds: 1000), () {
+  void _ColorsTex() {
+    Future.delayed(const Duration(milliseconds: 100), () {
       setState(() {
         _isExpanded = !_isExpanded;
-        _width = _width == 280 ? 280 : 280;
-        _height = _height == 470 ? 540 : 470;
         _colores = _isExpanded ? Colors.red : Colors.grey;
       });
       Future.delayed(const Duration(milliseconds: 2000), () {
         setState(() {
           _isExpanded = !_isExpanded;
-          _width = _width == 280 ? 280 : 280;
-          _height = _height == 470 ? 540 : 470;
           _colores = _isExpanded ? Colors.red : Colors.grey;
         });
       });
@@ -148,6 +111,7 @@ class _RecordState extends State<Record> {
 
   Widget Ingresar(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Container(
         width: _width,
         height: _height,
@@ -165,21 +129,7 @@ class _RecordState extends State<Record> {
                 Imagen(),
               ],
             ),
-            const SizedBox(height: 20),
-            Column(
-              children: <Widget>[
-                Center(
-                  child: error(),
-                )
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Center(
-                  child: contrasena(),
-                )
-              ],
-            ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -432,16 +382,16 @@ class _RecordState extends State<Record> {
                           _Contrasena.text.isNotEmpty &&
                           _Contrasena1.text.isNotEmpty) {
                         if (_Contrasena.text == _Contrasena1.text) {
-                          amor();
+                          concide();
                         } else {
-                          _showErrorContrasena();
-                          _Sizebox();
+                          // _showErrorContrasena();
+                          // _Sizebox();
+                          contrasena();
+                          _ColorsTex();
                         }
                       } else {
-                        setState(() {
-                          _showErrorMessage();
-                          _Sizebox();
-                        });
+                        _ColorsTex();
+                        error();
                       }
 
                       /*   Navigator.push(
@@ -495,89 +445,47 @@ class _RecordState extends State<Record> {
   }
 
   Widget error() {
-    if (_Error) {
-      return Positioned(
-        left: 1,
-        top: 1,
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(1),
-            color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.8),
-            child: const Column(
-              children: <Widget>[
-                Text(
-                  'CAMPOS VACIOS',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 15,
-                    fontFamily: AutofillHints.creditCardFamilyName,
-                  ),
-                ),
-                Icon(
-                  Icons.error_rounded,
-                  color: Colors.red,
-                  size: 25,
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-    return Container(); // Retorna un container vacío si no hay error
-  }
-
-  Widget contrasena() {
-    if (_Errorcontra) {
-      return Positioned(
-        left: 1,
-        top: 1,
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(1),
-            color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.8),
-            child: const Column(
-              children: <Widget>[
-                Text(
-                  'CONTRASEÑA NO COINCIDE',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 15,
-                    fontFamily: AutofillHints.creditCardFamilyName,
-                  ),
-                ),
-                Icon(
-                  Icons.error_rounded,
-                  color: Colors.red,
-                  size: 25,
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-    return Container(); // Retorna un container vacío si no hay error
-  }
-
-  Widget amor() {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
+        // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          }
+        });
         return Container(
-          height: 200,
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                color: Colors.red,
+                // Color intermedio para la línea superior
+                width: 1.0,
+              ),
+            ),
+          ),
+          height: 100,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                    'Te quiero con todo mi corazon y quiro estar y tener todo con usted en mi vida '),
-                ElevatedButton(
-                  child: Text('Cerrar'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                Column(
+                  children: <Widget>[
+                    const Text(
+                      'CAMPOS VACÍOS',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontFamily: AutofillHints.addressCity),
+                    ),
+                    Image.asset(
+                      'imagenes/error.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
                 )
               ],
             ),
@@ -585,7 +493,109 @@ class _RecordState extends State<Record> {
         );
       },
     );
+    return Container();
+  }
 
+  Widget contrasena() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          }
+        });
+        return Container(
+          decoration: const BoxDecoration(
+              border: Border(
+            bottom: BorderSide(
+              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+              color: Colors.black,
+              width: 1.0,
+            ),
+          )),
+          height: 100,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    const Text(
+                      'CONTRASEÑA NO COINCIDEN',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontFamily: AutofillHints.addressCity),
+                    ),
+                    Image.asset(
+                      'imagenes/password.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    return Container();
+  }
+
+  Widget concide() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
+        Future.delayed(const Duration(seconds: 3), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Tower(),
+            ),
+          );
+        });
+        return Container(
+          decoration: const BoxDecoration(
+              border: Border(
+            bottom: BorderSide(
+              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+              color: Colors.black,
+              width: 1.0,
+            ),
+          )),
+          height: 100,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    const Text(
+                      'USUARIO REGISTRADO CON ÉXITO',
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 20,
+                          fontFamily: AutofillHints.addressCity),
+                    ),
+                    Image.asset(
+                      'imagenes/regitrado_exitoso.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
     return Container();
   }
 }
