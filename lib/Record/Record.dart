@@ -1,4 +1,6 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_final_fields
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto/Menu/main.dart';
 // ignore: unused_import
@@ -25,7 +27,7 @@ class _RecordState extends State<Record> {
     '_Contrasena1'
   ];
   double _width = 280;
-  double _height = 470;
+  double _height = 480;
   bool _isExpanded = false;
   Color _colores = Colors.grey;
 
@@ -273,8 +275,9 @@ class _RecordState extends State<Record> {
                       children: <Widget>[
                         SizedBox(
                           width: 180,
-                          height: 40,
+                          height: 60,
                           child: TextFormField(
+                            maxLength: 10,
                             controller: _Contrasena,
                             style: const TextStyle(fontSize: 15),
                             obscureText: true,
@@ -333,8 +336,9 @@ class _RecordState extends State<Record> {
                   children: <Widget>[
                     SizedBox(
                       width: 180,
-                      height: 40,
+                      height: 60,
                       child: TextFormField(
+                        maxLength: 10,
                         controller: _Contrasena1,
                         style: const TextStyle(fontSize: 15),
                         obscureText: true,
@@ -485,6 +489,13 @@ class _RecordState extends State<Record> {
                       width: 50,
                       height: 50,
                     ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Time(),
+                        )
+                      ],
+                    )
                   ],
                 )
               ],
@@ -535,6 +546,13 @@ class _RecordState extends State<Record> {
                       width: 50,
                       height: 50,
                     ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Time(),
+                        )
+                      ],
+                    )
                   ],
                 )
               ],
@@ -588,6 +606,13 @@ class _RecordState extends State<Record> {
                       width: 50,
                       height: 50,
                     ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Time(),
+                        )
+                      ],
+                    )
                   ],
                 )
               ],
@@ -597,5 +622,49 @@ class _RecordState extends State<Record> {
       },
     );
     return Container();
+  }
+}
+
+class Time extends StatefulWidget {
+  @override
+  _TimeState createState() => _TimeState();
+}
+
+class _TimeState extends State<Time> {
+  int segundos = 3;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    iniciarTimer();
+  }
+
+  void iniciarTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (segundos > 0) {
+          segundos--;
+        } else {
+          timer.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Tiempo restante: $segundos segundos',
+        style: TextStyle(fontSize: 10),
+      ),
+    );
   }
 }

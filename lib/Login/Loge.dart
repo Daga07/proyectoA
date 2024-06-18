@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, unused_import, unnecessary_const
+// ignore_for_file: file_names, non_constant_identifier_names, unused_import, unnecessary_const, avoid_unnecessary_containers
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,8 +149,9 @@ class _LogeState extends State<Loge> {
                         const SizedBox(height: 20),
                         SizedBox(
                           width: 180,
-                          height: 40,
+                          height: 60,
                           child: TextField(
+                            maxLength: 10,
                             controller: _Log,
                             style: const TextStyle(fontSize: 15),
                             obscureText: true,
@@ -280,7 +281,6 @@ class _LogeState extends State<Loge> {
       builder: (BuildContext context) {
         // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
         Future.delayed(const Duration(seconds: 3), () {
-          ;
           if (Navigator.canPop(context)) {
             Navigator.pop(context);
           }
@@ -321,7 +321,7 @@ class _LogeState extends State<Loge> {
                 Column(
                   children: <Widget>[
                     Container(
-                      child: Time(),
+                      child: const Time(),
                     )
                   ],
                 )
@@ -376,6 +376,13 @@ class _LogeState extends State<Loge> {
                       width: 50,
                       height: 50,
                     ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: const Time(),
+                        )
+                      ],
+                    )
                   ],
                 )
               ],
@@ -389,7 +396,10 @@ class _LogeState extends State<Loge> {
 }
 
 class Time extends StatefulWidget {
+  const Time({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _TimeState createState() => _TimeState();
 }
 
@@ -404,7 +414,7 @@ class _TimeState extends State<Time> {
   }
 
   void iniciarTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (segundos > 0) {
           segundos--;
@@ -426,7 +436,7 @@ class _TimeState extends State<Time> {
     return Center(
       child: Text(
         'Tiempo restante: $segundos segundos',
-        style: TextStyle(fontSize: 10),
+        style: const TextStyle(fontSize: 10),
       ),
     );
   }
