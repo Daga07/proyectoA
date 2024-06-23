@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_final_fields, avoid_unnecessary_containers
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _RecordState extends State<Record> {
     '_Contrasena1'
   ];
   double _width = 280;
-  double _height = 480;
+  double _height = 490;
   bool _isExpanded = false;
   Color _colores = Colors.grey;
 
@@ -170,7 +170,7 @@ class _RecordState extends State<Record> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(
                               color: Color.fromARGB(192, 160, 61, 122),
                               width: 2,
@@ -374,10 +374,10 @@ class _RecordState extends State<Record> {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(22),
                     border: Border.all(
                         color: const Color.fromARGB(146, 40, 114, 56),
-                        width: 0.5),
+                        width: 0.9),
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -417,7 +417,7 @@ class _RecordState extends State<Record> {
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius:
-                            BorderRadius.circular(30), // Bordes redondeados
+                            BorderRadius.circular(20), // Bordes redondeados
                       ),
                       elevation: 40, // Sombra del botón
                       shadowColor: Colors.black, // Color de la sombra

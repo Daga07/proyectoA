@@ -9,7 +9,7 @@ class Help extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
-          decoration: BoxDecoration(
+        decoration: BoxDecoration(
           color: const Color.fromARGB(255, 253, 253, 253), // Color de fondo
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
@@ -22,8 +22,7 @@ class Help extends StatelessWidget {
             child: botones(context),
           ),
         ),
-      // Color de fondo del Scaffold
-      
+        // Color de fondo del Scaffold
       ),
     );
   }
@@ -39,7 +38,6 @@ class Help extends StatelessWidget {
             height: 90,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-             
               image: const DecorationImage(
                   image: AssetImage("imagenes/manual.gif"),
                   fit: BoxFit
@@ -56,7 +54,6 @@ class Help extends StatelessWidget {
               height: 112,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-               
                 image: const DecorationImage(
                     image: AssetImage("imagenes/tower.jpg"),
                     fit: BoxFit
@@ -178,7 +175,6 @@ class Help extends StatelessWidget {
               height: 112,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-              
                 image: const DecorationImage(
                     image: AssetImage("imagenes/app.png"),
                     fit: BoxFit
@@ -268,38 +264,34 @@ class Help extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-         
-             Container(
-              width: 230,
-              height: 80,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: const Color.fromARGB(255, 120, 240, 109), width: 0.2),
-                image: const DecorationImage(
-                    image: AssetImage("imagenes/uceva.png"),
-                    fit: BoxFit
-                        .contain // Puedes ajustar esto para mantener la relación de aspecto
-                    ),
-              ),
-              child: InkWell(
-            onTap: () async {
-              const url = 'https://www.uceva.edu.co/facultad-de-ingenieria/ingenieria-de-sistemas/';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-        
+          Container(
+            width: 230,
+            height: 80,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                  color: const Color.fromARGB(255, 120, 240, 109), width: 0.2),
+              image: const DecorationImage(
+                  image: AssetImage("imagenes/uceva.png"),
+                  fit: BoxFit
+                      .contain // Puedes ajustar esto para mantener la relación de aspecto
+                  ),
+            ),
+            /*   child: InkWell(
+              onTap: () async {
+                const url =
+                    'https://www.uceva.edu.co/facultad-de-ingenieria/ingenieria-de-sistemas/';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),*/
           ),
-        ),
           const SizedBox(height: 20),
         ],
       ),
     );
-    
   }
 }
-
-

@@ -92,7 +92,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   Flexible(
                     child: SizedBox(
                       width: 180,
-                      height: 180,
+                      height: 200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -127,7 +127,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   const SizedBox(width: 20),
                   SizedBox(
                     width: 180,
-                    height: 180,
+                    height: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -172,7 +172,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   Flexible(
                     child: SizedBox(
                       width: 180,
-                      height: 180,
+                      height: 200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -207,7 +207,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   const SizedBox(width: 20),
                   SizedBox(
                     width: 180,
-                    height: 180,
+                    height: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -252,7 +252,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   Flexible(
                     child: SizedBox(
                       width: 180,
-                      height: 180,
+                      height: 200,
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -286,7 +286,7 @@ class _PlantInformationState extends State<PlantInformation> {
                   const SizedBox(width: 20),
                   SizedBox(
                     width: 180,
-                    height: 180,
+                    height: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

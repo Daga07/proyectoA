@@ -55,7 +55,7 @@ class _LogeState extends State<Loge> {
         children: <Widget>[
           Container(
             width: 280,
-            height: 220,
+            height: 240,
             // tiempo que tarda en abrir el container animado
 
             decoration: BoxDecoration(
@@ -190,10 +190,10 @@ class _LogeState extends State<Loge> {
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(22),
                         border: Border.all(
                             color: const Color.fromARGB(146, 40, 114, 56),
-                            width: 0.5),
+                            width: 0.9),
                       ),
                       child: ElevatedButton(
                         onPressed: () {
@@ -218,7 +218,7 @@ class _LogeState extends State<Loge> {
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.circular(30), // Bordes redondeados
+                                BorderRadius.circular(20), // Bordes redondeados
                           ),
                           elevation: 40, // Sombra del botón
                           shadowColor: Colors.black, // Color de la sombra
@@ -226,13 +226,13 @@ class _LogeState extends State<Loge> {
                         child: const Text('Registro'),
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 22),
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(22),
                         border: Border.all(
                             color: const Color.fromARGB(146, 40, 114, 56),
-                            width: 0.5),
+                            width: 0.9),
                       ),
                       child: ElevatedButton(
                         onPressed: () {
@@ -257,7 +257,7 @@ class _LogeState extends State<Loge> {
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.circular(30), // Bordes redondeados
+                                BorderRadius.circular(20), // Bordes redondeados
                           ),
                           elevation: 40, // Sombra del botón
                           shadowColor: Colors.black, // Color de la sombra
@@ -266,7 +266,8 @@ class _LogeState extends State<Loge> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -365,9 +366,9 @@ class _LogeState extends State<Loge> {
                 Column(
                   children: <Widget>[
                     const Text(
-                      'USUARIO REGISTRADO CON ÉXITO',
+                      'USUARIO INGRESÓ CON ÉXITO',
                       style: const TextStyle(
-                          color: Color.fromARGB(255, 2, 2, 2),
+                          color: Colors.green,
                           fontSize: 20,
                           fontFamily: AutofillHints.addressCity),
                     ),

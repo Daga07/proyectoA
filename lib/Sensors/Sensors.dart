@@ -1,7 +1,7 @@
-// ignore_for_file: file_names, avoid_unnecessary_containers
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names, avoid_unnecessary_containers, unused_field, non_constant_identifier_names, prefer_final_fields, unused_element, sized_box_for_whitespace, avoid_print
+import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Sensors extends StatelessWidget {
@@ -9,7 +9,7 @@ class Sensors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: EditableText.debugDeterministicCursor,
       home: Container(
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 253, 253, 253), // Color de fondo
@@ -31,6 +31,7 @@ class Sensors extends StatelessWidget {
                   Center(
                       child: Column(
                     children: <Widget>[
+                      SizedBox(height: 15),
                       Sensor(),
                       // MyHomePage(),
                     ],
@@ -55,10 +56,40 @@ class Sensor extends StatefulWidget {
 }
 
 class _SensorState extends State<Sensor> {
+  double _ramdonTempre = 0.0;
+  double _ramdonHumedad = 0.0;
+  double _ramdonNivel = 0.0;
+  Random _random = Random();
   double Temperatura = 100;
   double Humedad = 50;
   double Nivel = 90;
+  Timer? _timer;
   var _luz = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _generateRandomNumber();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _generateRandomNumber() {
+    _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+      setState(() {
+        _ramdonTempre = _random.nextInt(99).toDouble();
+        print("Tempera: $_ramdonTempre");
+        _ramdonHumedad = _random.nextInt(99).toDouble();
+        print("Humedad: $_ramdonHumedad");
+        _ramdonNivel = _random.nextInt(99).toDouble();
+        print("Nivel: $_ramdonHumedad");
+      });
+    });
+  }
 
   void _clicluz() {
     setState(() {
@@ -68,7 +99,6 @@ class _SensorState extends State<Sensor> {
   }
 
   @override
-  // ignore: non_constant_identifier_names
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -138,7 +168,7 @@ class _SensorState extends State<Sensor> {
                   ],
                   pointers: <GaugePointer>[
                     RangePointer(
-                      value: Humedad,
+                      value: _ramdonHumedad,
                       width: 14, // Ancho del rango
                       //   sizeUnit: GaugeSizeUnit.factor,
                       enableAnimation: true,
@@ -159,7 +189,7 @@ class _SensorState extends State<Sensor> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              '${Humedad.toString()}%',
+                              '${_ramdonHumedad.toString()}%',
                               style: const TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -204,7 +234,7 @@ class _SensorState extends State<Sensor> {
                   ],
                   pointers: <GaugePointer>[
                     RangePointer(
-                      value: Temperatura,
+                      value: _ramdonTempre,
                       width: 14, // Ancho del rango
                       //   sizeUnit: GaugeSizeUnit.factor,
                       enableAnimation: true,
@@ -225,7 +255,7 @@ class _SensorState extends State<Sensor> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              '${Temperatura.toString()}%',
+                              '${_ramdonTempre.toString()}%',
                               style: const TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -270,7 +300,7 @@ class _SensorState extends State<Sensor> {
                   ],
                   pointers: <GaugePointer>[
                     RangePointer(
-                      value: Nivel,
+                      value: _ramdonNivel,
                       width: 14, // Ancho del rango
                       //   sizeUnit: GaugeSizeUnit.factor,
                       enableAnimation: true,
@@ -291,7 +321,7 @@ class _SensorState extends State<Sensor> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              '${Nivel.toString()}%',
+                              '${_ramdonNivel.toString()}%',
                               style: const TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),

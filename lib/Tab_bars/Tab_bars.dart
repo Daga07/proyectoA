@@ -30,13 +30,13 @@ class Tan_bars extends StatelessWidget {
         late Widget selectedWidget;
         switch (index) {
           case 0:
-            selectedWidget = Sensors();
+            selectedWidget = const Sensors();
             break;
           case 1:
-            selectedWidget = Plant();
+            selectedWidget = const Plant();
             break;
           case 2:
-            selectedWidget = Help();
+            selectedWidget = const Help();
             break;
           default:
             selectedWidget = const SizedBox.shrink();
