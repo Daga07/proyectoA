@@ -1,7 +1,6 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:proyecto/Animacion/Animacion.dart';
 // ignore: unused_import
 import 'package:proyecto/Help_user/Help.dart';
 import 'package:proyecto/Login/Loge.dart';
@@ -13,8 +12,6 @@ import 'package:proyecto/Sensors/Sensors.dart';
 import 'package:proyecto/Tab_bars/Tab_bars.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
   runApp(const Tower());
 }
 
@@ -91,15 +88,6 @@ Widget ImganeRadio() {
 }
 
 //record
-Widget Animation() {
-  // ignore: sized_box_for_whitespace
-  return Container(
-    width: 20,
-    height: 20,
-    color: Colors.transparent,
-    child: Animacion(),
-  );
-}
 
 Widget ContainerAnimado() {
   return Container(

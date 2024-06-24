@@ -286,47 +286,49 @@ class _LogeState extends State<Loge> {
             Navigator.pop(context);
           }
         });
-        return Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-                color: Colors.red,
-                // Color intermedio para la línea superior
-                width: 1.0,
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                  color: Colors.red,
+                  // Color intermedio para la línea superior
+                  width: 1.0,
+                ),
               ),
             ),
-          ),
-          height: 120,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const Text(
-                      'CAMPOS VACÍOS',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 20,
-                          fontFamily: AutofillHints.addressCity),
-                    ),
-                    Image.asset(
-                      'imagenes/error.gif',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      child: const Time(),
-                    )
-                  ],
-                )
-              ],
+            height: 120,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      const Text(
+                        'CAMPOS VACÍOS',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontFamily: AutofillHints.addressCity),
+                      ),
+                      Image.asset(
+                        'imagenes/error.gif',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        child: const Time(),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -348,45 +350,47 @@ class _LogeState extends State<Loge> {
             );
           }
         });
-        return Container(
-          decoration: const BoxDecoration(
-              border: Border(
-            bottom: BorderSide(
-              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-              color: Colors.black,
-              width: 1.0,
-            ),
-          )),
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const Text(
-                      'USUARIO INGRESÓ CON ÉXITO',
-                      style: const TextStyle(
-                          color: Colors.green,
-                          fontSize: 20,
-                          fontFamily: AutofillHints.addressCity),
-                    ),
-                    Image.asset(
-                      'imagenes/employee.gif',
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child: const Time(),
-                        )
-                      ],
-                    )
-                  ],
-                )
-              ],
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+                border: Border(
+              bottom: BorderSide(
+                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                color: Colors.black,
+                width: 1.0,
+              ),
+            )),
+            height: 100,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      const Text(
+                        'USUARIO INGRESÓ CON ÉXITO',
+                        style: const TextStyle(
+                            color: Colors.green,
+                            fontSize: 20,
+                            fontFamily: AutofillHints.addressCity),
+                      ),
+                      Image.asset(
+                        'imagenes/employee.gif',
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            child: const Time(),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -442,22 +446,3 @@ class _TimeState extends State<Time> {
     );
   }
 }
-
-
- /* gradient: LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      colors: [
-        Colors.red, // Color inicial del degradado para la línea superior
-        Colors.blue, // Color final del degradado para la línea superior
-      ],
-    ), // colores en contenerdor unidos */
-
-    /* left: BorderSide(
-                color: Colors.black,
-                width: 1.0,
-              ),
-             right: BorderSide(
-                color: Colors.black,
-                width: 1.0,
-              ), // liena de color en un contenar al fina, el pricipio, derecha o izquirda */

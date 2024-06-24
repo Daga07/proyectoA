@@ -458,47 +458,49 @@ class _RecordState extends State<Record> {
             Navigator.pop(context);
           }
         });
-        return Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-                color: Colors.red,
-                // Color intermedio para la línea superior
-                width: 1.0,
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                  color: Colors.red,
+                  // Color intermedio para la línea superior
+                  width: 1.0,
+                ),
               ),
             ),
-          ),
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const Text(
-                      'CAMPOS VACÍOS',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 20,
-                          fontFamily: AutofillHints.addressCity),
-                    ),
-                    Image.asset(
-                      'imagenes/error.gif',
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child: Time(),
-                        )
-                      ],
-                    )
-                  ],
-                )
-              ],
+            height: 100,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      const Text(
+                        'CAMPOS VACÍOS',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontFamily: AutofillHints.addressCity),
+                      ),
+                      Image.asset(
+                        'imagenes/error.gif',
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            child: Time(),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -517,45 +519,47 @@ class _RecordState extends State<Record> {
             Navigator.pop(context);
           }
         });
-        return Container(
-          decoration: const BoxDecoration(
-              border: Border(
-            bottom: BorderSide(
-              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-              color: Colors.black,
-              width: 1.0,
-            ),
-          )),
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const Text(
-                      'CONTRASEÑA NO COINCIDEN',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 20,
-                          fontFamily: AutofillHints.addressCity),
-                    ),
-                    Image.asset(
-                      'imagenes/password.gif',
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child: Time(),
-                        )
-                      ],
-                    )
-                  ],
-                )
-              ],
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+                border: Border(
+              bottom: BorderSide(
+                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                color: Colors.black,
+                width: 1.0,
+              ),
+            )),
+            height: 100,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      const Text(
+                        'CONTRASEÑA NO COINCIDEN',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontFamily: AutofillHints.addressCity),
+                      ),
+                      Image.asset(
+                        'imagenes/password.gif',
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            child: Time(),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -577,45 +581,47 @@ class _RecordState extends State<Record> {
             ),
           );
         });
-        return Container(
-          decoration: const BoxDecoration(
-              border: Border(
-            bottom: BorderSide(
-              // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-              color: Colors.black,
-              width: 1.0,
-            ),
-          )),
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const Text(
-                      'USUARIO REGISTRADO CON ÉXITO',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 20,
-                          fontFamily: AutofillHints.addressCity),
-                    ),
-                    Image.asset(
-                      'imagenes/regitrado_exitoso.gif',
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          child: Time(),
-                        )
-                      ],
-                    )
-                  ],
-                )
-              ],
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+                border: Border(
+              bottom: BorderSide(
+                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                color: Colors.black,
+                width: 1.0,
+              ),
+            )),
+            height: 100,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      const Text(
+                        'USUARIO REGISTRADO CON ÉXITO',
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 20,
+                            fontFamily: AutofillHints.addressCity),
+                      ),
+                      Image.asset(
+                        'imagenes/regitrado_exitoso.gif',
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            child: Time(),
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );

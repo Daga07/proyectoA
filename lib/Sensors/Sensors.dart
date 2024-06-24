@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, avoid_unnecessary_containers, unused_field, non_constant_identifier_names, prefer_final_fields, unused_element, sized_box_for_whitespace, avoid_print
+// ignore_for_file: file_names, avoid_unnecessary_containers, unused_field, non_constant_identifier_names, prefer_final_fields, unused_element, sized_box_for_whitespace, avoid_print, sort_child_properties_last
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -51,25 +51,21 @@ class Sensor extends StatefulWidget {
   const Sensor({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SensorState createState() => _SensorState();
 }
 
 class _SensorState extends State<Sensor> {
-  double _ramdonTempre = 0.0;
-  double _ramdonHumedad = 0.0;
-  double _ramdonNivel = 0.0;
-  Random _random = Random();
-  double Temperatura = 100;
-  double Humedad = 50;
-  double Nivel = 90;
+  double _randomTemp = 0.0;
+  double _randomHumidity = 0.0;
+  double _randomLevel = 0.0;
+  final Random _random = Random();
   Timer? _timer;
-  var _luz = 0;
+  int _light = 0;
 
   @override
   void initState() {
     super.initState();
-    _generateRandomNumber();
+    _generateRandomValues();
   }
 
   @override
@@ -78,24 +74,20 @@ class _SensorState extends State<Sensor> {
     super.dispose();
   }
 
-  void _generateRandomNumber() {
+  void _generateRandomValues() {
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
       setState(() {
-        _ramdonTempre = _random.nextInt(99).toDouble();
-        print("Tempera: $_ramdonTempre");
-        _ramdonHumedad = _random.nextInt(99).toDouble();
-        print("Humedad: $_ramdonHumedad");
-        _ramdonNivel = _random.nextInt(99).toDouble();
-        print("Nivel: $_ramdonHumedad");
+        _randomTemp = _random.nextInt(100).toDouble();
+        _randomHumidity = _random.nextInt(100).toDouble();
+        _randomLevel = _random.nextInt(100).toDouble();
       });
     });
   }
 
-  void _clicluz() {
+  void _toggleLight() {
     setState(() {
-      _luz = _luz == 0 ? 1 : 0;
+      _light = _light == 0 ? 1 : 0;
     });
-    print('LUZ PRENDE: $_luz');
   }
 
   @override
@@ -105,245 +97,133 @@ class _SensorState extends State<Sensor> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /*  child: Container(
-                  child: _luz == 0
-                      ? const Icon(Icons.lightbulb_outline, size: 20)
-                      : const Image(
-                          image: AssetImage('imagenes/luz.gif'),
-                          fit: BoxFit.contain,
-                        ),
-                ) */
-
           const SizedBox(height: 20),
-          Container(
-              child: Column(
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: _clicluz,
-                // ignore: sort_child_properties_last
-                child: Tooltip(
-                  // ignore: sort_child_properties_last
-                  child: _luz == 0
-                      ? const Icon(
-                          Icons.lightbulb_outline,
-                          size: 25,
-                        )
-                      : const Icon(
-                          Icons.lightbulb_rounded,
-                          size: 30,
-                          color: Color.fromARGB(255, 233, 231, 142),
-                        ),
-                  message: _luz == 0 ? 'ENCENDER' : 'APAGAR',
-                  textStyle: const TextStyle(
-                    fontSize: 11,
-                  ),
-                ),
-
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 213, 240, 211),
-                    elevation: 10,
-                    shadowColor: const Color.fromARGB(255, 213, 240, 211)),
-              )
-            ],
-          )),
+          ElevatedButton(
+            onPressed: _toggleLight,
+            child: Tooltip(
+              message: _light == 0 ? 'ENCENDER' : 'APAGAR',
+              textStyle: const TextStyle(fontSize: 11),
+              child: Icon(
+                _light == 0 ? Icons.lightbulb_outline : Icons.lightbulb_rounded,
+                size: 30,
+                color: _light == 0
+                    ? null
+                    : const Color.fromARGB(255, 233, 231, 142),
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 213, 240, 211),
+              elevation: 10,
+              shadowColor: const Color.fromARGB(255, 213, 240, 211),
+            ),
+          ),
           const SizedBox(height: 30),
-          Container(
-            width: 230,
-            height: 230,
-            child: SfRadialGauge(axes: <RadialAxis>[
-              RadialAxis(
-                  minimum: 0,
-                  maximum: 100.1,
-                  interval: 5,
-                  //  startAngle: 0,
-                  //  endAngle: 360,
-                  ranges: <GaugeRange>[
-                    GaugeRange(
-                      startValue: 0,
-                      endValue: 100,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      //  startWidth: 5,
-                      //  endWidth: 10,
-                    ),
-                  ],
-                  pointers: <GaugePointer>[
-                    RangePointer(
-                      value: _ramdonHumedad,
-                      width: 14, // Ancho del rango
-                      //   sizeUnit: GaugeSizeUnit.factor,
-                      enableAnimation: true,
-                      animationDuration: 1200,
-                      gradient: const SweepGradient(
-                        colors: <Color>[
-                          Color.fromARGB(255, 113, 215, 233),
-                          Color.fromARGB(255, 3, 115, 243),
-                        ],
-                        stops: <double>[0.15, 0.75],
-                      ),
-                    ),
-                  ],
-                  annotations: <GaugeAnnotation>[
-                    GaugeAnnotation(
-                      widget: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '${_ramdonHumedad.toString()}%',
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            const Text(
-                              "HUMEDAD",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            Image.asset(
-                              'imagenes/humedad.gif',
-                              width: 40,
-                              height: 40,
-                            ),
-                          ],
-                        ),
-                      ),
-                      angle: 90,
-                      positionFactor: 0.5,
-                    )
-                  ])
-            ]),
+          SensorGauge(
+            value: _randomHumidity,
+            label: 'HUMEDAD',
+            imageAsset: 'imagenes/humedad.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 113, 215, 233),
+              Color.fromARGB(255, 3, 115, 243)
+            ],
           ),
           const SizedBox(height: 15),
-          Container(
-            width: 230,
-            height: 230,
-            child: SfRadialGauge(axes: <RadialAxis>[
-              RadialAxis(
-                  minimum: 0,
-                  maximum: 100.1,
-                  interval: 5,
-                  //  startAngle: 0,
-                  //  endAngle: 360,
-                  ranges: <GaugeRange>[
-                    GaugeRange(
-                      startValue: 0,
-                      endValue: 100,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      //  startWidth: 5,
-                      //  endWidth: 10,
-                    ),
-                  ],
-                  pointers: <GaugePointer>[
-                    RangePointer(
-                      value: _ramdonTempre,
-                      width: 14, // Ancho del rango
-                      //   sizeUnit: GaugeSizeUnit.factor,
-                      enableAnimation: true,
-                      animationDuration: 1200,
-                      gradient: const SweepGradient(
-                        colors: <Color>[
-                          Color.fromARGB(255, 211, 233, 113),
-                          Color.fromARGB(255, 243, 39, 3),
-                        ],
-                        stops: <double>[0.15, 0.75],
-                      ),
-                    ),
-                  ],
-                  annotations: <GaugeAnnotation>[
-                    GaugeAnnotation(
-                      widget: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '${_ramdonTempre.toString()}%',
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            const Text(
-                              "TEMPERATURA",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            Image.asset(
-                              'imagenes/temperatura.gif',
-                              width: 40,
-                              height: 40,
-                            ),
-                          ],
-                        ),
-                      ),
-                      angle: 90,
-                      positionFactor: 0.5,
-                    )
-                  ])
-            ]),
+          SensorGauge(
+            value: _randomTemp,
+            label: 'TEMPERATURA',
+            imageAsset: 'imagenes/temperatura.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 211, 233, 113),
+              Color.fromARGB(255, 243, 39, 3)
+            ],
           ),
           const SizedBox(height: 15),
-          Container(
-            width: 230,
-            height: 230,
-            child: SfRadialGauge(axes: <RadialAxis>[
-              RadialAxis(
-                  minimum: 0,
-                  maximum: 100.1,
-                  interval: 5,
-                  //  startAngle: 0,
-                  //  endAngle: 360,
-                  ranges: <GaugeRange>[
-                    GaugeRange(
-                      startValue: 0,
-                      endValue: 100,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      //  startWidth: 5,
-                      //  endWidth: 10,
+          SensorGauge(
+            value: _randomLevel,
+            label: 'NIVEL DE AGUA',
+            imageAsset: 'imagenes/agua.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 113, 175, 233),
+              Color.fromARGB(255, 8, 1, 75)
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SensorGauge extends StatelessWidget {
+  final double value;
+  final String label;
+  final String imageAsset;
+  final List<Color> gradientColors;
+
+  const SensorGauge({
+    Key? key,
+    required this.value,
+    required this.label,
+    required this.imageAsset,
+    required this.gradientColors,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 230,
+      height: 230,
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+            minimum: 0,
+            maximum: 100.1,
+            interval: 5,
+            ranges: <GaugeRange>[
+              GaugeRange(
+                startValue: 0,
+                endValue: 100,
+                color: const Color.fromARGB(255, 255, 255, 255),
+              ),
+            ],
+            pointers: <GaugePointer>[
+              RangePointer(
+                value: value,
+                width: 14,
+                enableAnimation: true,
+                animationDuration: 1200,
+                gradient: SweepGradient(
+                  colors: gradientColors,
+                  stops: const <double>[0.15, 0.75],
+                ),
+              ),
+            ],
+            annotations: <GaugeAnnotation>[
+              GaugeAnnotation(
+                widget: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '${value.toStringAsFixed(1)}%',
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      label,
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    Image.asset(
+                      imageAsset,
+                      width: 40,
+                      height: 40,
                     ),
                   ],
-                  pointers: <GaugePointer>[
-                    RangePointer(
-                      value: _ramdonNivel,
-                      width: 14, // Ancho del rango
-                      //   sizeUnit: GaugeSizeUnit.factor,
-                      enableAnimation: true,
-                      animationDuration: 1200,
-                      gradient: const SweepGradient(
-                        colors: <Color>[
-                          Color.fromARGB(255, 113, 175, 233),
-                          Color.fromARGB(255, 8, 1, 75),
-                        ],
-                        stops: <double>[0.15, 0.75],
-                      ),
-                    ),
-                  ],
-                  annotations: <GaugeAnnotation>[
-                    GaugeAnnotation(
-                      widget: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '${_ramdonNivel.toString()}%',
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            const Text(
-                              "NIVEL DE AGUA",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            Image.asset(
-                              'imagenes/agua.gif',
-                              width: 40,
-                              height: 40,
-                            ),
-                          ],
-                        ),
-                      ),
-                      angle: 90,
-                      positionFactor: 0.5,
-                    )
-                  ])
-            ]),
-          )
+                ),
+                angle: 90,
+                positionFactor: 0.5,
+              ),
+            ],
+          ),
         ],
       ),
     );
