@@ -159,13 +159,14 @@ class _RecordState extends State<Record> {
                       width: 180,
                       height: 40,
                       child: TextFormField(
+                        autofocus: true,
                         controller: _Nombre,
                         style: const TextStyle(fontSize: 15),
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Nombre',
                           hintText: 'Nombre',
-                          contentPadding: const EdgeInsets.all(20),
+                          contentPadding: const EdgeInsets.all(5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -223,7 +224,7 @@ class _RecordState extends State<Record> {
                         decoration: InputDecoration(
                           labelText: 'Correo',
                           hintText: 'Correo',
-                          contentPadding: const EdgeInsets.all(20),
+                          contentPadding: const EdgeInsets.all(5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -284,7 +285,7 @@ class _RecordState extends State<Record> {
                             decoration: InputDecoration(
                               labelText: 'Contraseña',
                               hintText: 'Contraseña',
-                              contentPadding: const EdgeInsets.all(20),
+                              contentPadding: const EdgeInsets.all(5),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -345,7 +346,7 @@ class _RecordState extends State<Record> {
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
                           hintText: 'Re Contraseña',
-                          contentPadding: const EdgeInsets.all(20),
+                          contentPadding: const EdgeInsets.all(5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),

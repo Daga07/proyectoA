@@ -63,15 +63,17 @@ Widget Menu(context) {
       child: Center(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(height: 20),
-              ContainerAnimado(),
-              const SizedBox(height: 20),
-              Loge(),
-              const SizedBox(height: 20),
-            ],
+          child: Flexible(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(height: 20),
+                ContainerAnimado(),
+                const SizedBox(height: 20),
+                Loge(),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),
