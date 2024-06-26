@@ -26,17 +26,19 @@ class Sensors extends StatelessWidget {
             child: const Center(
               child: SingleChildScrollView(
                   //MyHomePage
-                  child: Column(
-                children: <Widget>[
-                  Center(
-                      child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 15),
-                      Sensor(),
-                      // MyHomePage(),
-                    ],
-                  ))
-                ],
+                  child: Flexible(
+                child: Column(
+                  children: <Widget>[
+                    Center(
+                        child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 15),
+                        Sensor(),
+                        // MyHomePage(),
+                      ],
+                    ))
+                  ],
+                ),
               )),
             ),
           ),
@@ -92,63 +94,59 @@ class _SensorState extends State<Sensor> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _toggleLight,
-            child: Tooltip(
-              message: _light == 0 ? 'ENCENDER' : 'APAGAR',
-              textStyle: const TextStyle(fontSize: 11),
-              child: Icon(
-                _light == 0 ? Icons.lightbulb_outline : Icons.lightbulb_rounded,
-                size: 30,
-                color: _light == 0
-                    ? null
-                    : const Color.fromARGB(255, 233, 231, 142),
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 213, 240, 211),
-              elevation: 10,
-              shadowColor: const Color.fromARGB(255, 213, 240, 211),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: _toggleLight,
+          child: Tooltip(
+            message: _light == 0 ? 'ENCENDER' : 'APAGAR',
+            textStyle: const TextStyle(fontSize: 11),
+            child: Icon(
+              _light == 0 ? Icons.lightbulb_outline : Icons.lightbulb_rounded,
+              size: 30,
+              color:
+                  _light == 0 ? null : const Color.fromARGB(255, 233, 231, 142),
             ),
           ),
-          const SizedBox(height: 30),
-          SensorGauge(
-            value: _randomHumidity,
-            label: 'HUMEDAD',
-            imageAsset: 'imagenes/humedad.gif',
-            gradientColors: const [
-              Color.fromARGB(255, 113, 215, 233),
-              Color.fromARGB(255, 3, 115, 243)
-            ],
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 213, 240, 211),
+            elevation: 10,
+            shadowColor: const Color.fromARGB(255, 213, 240, 211),
           ),
-          const SizedBox(height: 15),
-          SensorGauge(
-            value: _randomTemp,
-            label: 'TEMPERATURA',
-            imageAsset: 'imagenes/temperatura.gif',
-            gradientColors: const [
-              Color.fromARGB(255, 211, 233, 113),
-              Color.fromARGB(255, 243, 39, 3)
-            ],
-          ),
-          const SizedBox(height: 15),
-          SensorGauge(
-            value: _randomLevel,
-            label: 'NIVEL DE AGUA',
-            imageAsset: 'imagenes/agua.gif',
-            gradientColors: const [
-              Color.fromARGB(255, 113, 175, 233),
-              Color.fromARGB(255, 8, 1, 75)
-            ],
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 30),
+        SensorGauge(
+          value: _randomHumidity,
+          label: 'HUMEDAD',
+          imageAsset: 'imagenes/humedad.gif',
+          gradientColors: const [
+            Color.fromARGB(255, 113, 215, 233),
+            Color.fromARGB(255, 3, 115, 243)
+          ],
+        ),
+        const SizedBox(height: 15),
+        SensorGauge(
+          value: _randomTemp,
+          label: 'TEMPERATURA',
+          imageAsset: 'imagenes/temperatura.gif',
+          gradientColors: const [
+            Color.fromARGB(255, 211, 233, 113),
+            Color.fromARGB(255, 243, 39, 3)
+          ],
+        ),
+        const SizedBox(height: 15),
+        SensorGauge(
+          value: _randomLevel,
+          label: 'NIVEL DE AGUA',
+          imageAsset: 'imagenes/agua.gif',
+          gradientColors: const [
+            Color.fromARGB(255, 113, 175, 233),
+            Color.fromARGB(255, 8, 1, 75)
+          ],
+        ),
+      ],
     );
   }
 }

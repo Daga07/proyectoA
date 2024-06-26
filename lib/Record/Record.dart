@@ -95,14 +95,16 @@ class _RecordState extends State<Record> {
             ),
           ),
           body: Center(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-              child: Center(
-                child: Ingresar(context),
+            child: Flexible(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+                child: Center(
+                  child: Ingresar(context),
+                ),
               ),
             ),
           ),
@@ -113,7 +115,6 @@ class _RecordState extends State<Record> {
 
   Widget Ingresar(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
       child: Container(
         width: _width,
         height: _height,
@@ -122,157 +123,166 @@ class _RecordState extends State<Record> {
           border: Border.all(
               color: const Color.fromARGB(153, 117, 40, 128), width: 0.4),
         ),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Imagen(),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: <Widget>[
-                    Container(
-                      width: 45,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(
-                            color: const Color.fromARGB(248, 53, 119, 51),
-                            width: 0.1),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: const Image(
-                          image: AssetImage("imagenes/add.gif"),
-                          fit: BoxFit.contain),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 180,
-                      height: 40,
-                      child: TextFormField(
-                        autofocus: true,
-                        controller: _Nombre,
-                        style: const TextStyle(fontSize: 15),
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Nombre',
-                          hintText: 'Nombre',
-                          contentPadding: const EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+        child: Flexible(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Imagen(),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                                color: const Color.fromARGB(248, 53, 119, 51),
+                                width: 0.1),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(192, 160, 61, 122),
-                              width: 2,
+                          clipBehavior: Clip.hardEdge,
+                          child: const Image(
+                              image: AssetImage("imagenes/add.gif"),
+                              fit: BoxFit.contain),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 180,
+                          height: 40,
+                          child: TextFormField(
+                            autofocus: true,
+                            controller: _Nombre,
+                            style: const TextStyle(fontSize: 15),
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Nombre',
+                              hintText: 'Nombre',
+                              contentPadding: const EdgeInsets.all(5),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(192, 160, 61, 122),
+                                  width: 2,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        _colores), // Color del borde cuando está habilitado pero no enfocado
+                              ),
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    _colores), // Color del borde cuando está habilitado pero no enfocado
-                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    const SizedBox(height: 15),
-                    Container(
-                      width: 45,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(
-                            color: const Color.fromARGB(248, 53, 119, 51),
-                            width: 0.1),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: const Image(
-                          image: AssetImage("imagenes/mail.gif"),
-                          fit: BoxFit.contain),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 180,
-                      height: 40,
-                      child: TextFormField(
-                        controller: _Correo,
-                        style: const TextStyle(fontSize: 15),
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Correo',
-                          hintText: 'Correo',
-                          contentPadding: const EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        const SizedBox(height: 15),
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                                color: const Color.fromARGB(248, 53, 119, 51),
+                                width: 0.1),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(192, 160, 61, 122),
-                              width: 2,
+                          clipBehavior: Clip.hardEdge,
+                          child: const Image(
+                              image: AssetImage("imagenes/mail.gif"),
+                              fit: BoxFit.contain),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 180,
+                          height: 40,
+                          child: TextFormField(
+                            controller: _Correo,
+                            style: const TextStyle(fontSize: 15),
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Correo',
+                              hintText: 'Correo',
+                              contentPadding: const EdgeInsets.all(5),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(192, 160, 61, 122),
+                                  width: 2,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        _colores), // Color del borde cuando está habilitado pero no enfocado
+                              ),
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    _colores), // Color del borde cuando está habilitado pero no enfocado
-                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Container(
-                      width: 45,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(
-                            color: const Color.fromARGB(248, 53, 119, 51),
-                            width: 0.1),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: const Image(
-                          image: AssetImage("imagenes/password1.gif"),
-                          fit: BoxFit.contain),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                                color: const Color.fromARGB(248, 53, 119, 51),
+                                width: 0.1),
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: const Image(
+                              image: AssetImage("imagenes/password1.gif"),
+                              fit: BoxFit.contain),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Column(
+                  ),
+                  Flexible(
+                    child: Column(
                       children: <Widget>[
                         SizedBox(
                           width: 180,
@@ -306,129 +316,138 @@ class _RecordState extends State<Record> {
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Container(
-                      width: 45,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(
-                            color: const Color.fromARGB(248, 53, 119, 51),
-                            width: 0.1),
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: const Image(
-                          image: AssetImage("imagenes/pasword2.gif"),
-                          fit: BoxFit.contain),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 180,
-                      height: 60,
-                      child: TextFormField(
-                        maxLength: 10,
-                        controller: _Contrasena1,
-                        style: const TextStyle(fontSize: 15),
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: 'Contraseña',
-                          hintText: 'Re Contraseña',
-                          contentPadding: const EdgeInsets.all(5),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 45,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                                color: const Color.fromARGB(248, 53, 119, 51),
+                                width: 0.1),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(192, 160, 61, 122),
-                              width: 2,
+                          clipBehavior: Clip.hardEdge,
+                          child: const Image(
+                              image: AssetImage("imagenes/pasword2.gif"),
+                              fit: BoxFit.contain),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 180,
+                          height: 60,
+                          child: TextFormField(
+                            maxLength: 10,
+                            controller: _Contrasena1,
+                            style: const TextStyle(fontSize: 15),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Contraseña',
+                              hintText: 'Re Contraseña',
+                              contentPadding: const EdgeInsets.all(5),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(192, 160, 61, 122),
+                                  width: 2,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        _colores), // Color del borde cuando está habilitado pero no enfocado
+                              ),
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color:
-                                    _colores), // Color del borde cuando está habilitado pero no enfocado
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        border: Border.all(
+                            color: const Color.fromARGB(146, 40, 114, 56),
+                            width: 0.9),
+                      ),
+                      child: Flexible(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_Nombre.text.isNotEmpty &&
+                                _Correo.text.isNotEmpty &&
+                                _Contrasena.text.isNotEmpty &&
+                                _Contrasena1.text.isNotEmpty) {
+                              if (_Contrasena.text == _Contrasena1.text) {
+                                concide();
+                              } else {
+                                // _showErrorContrasena();
+                                // _Sizebox();
+                                contrasena();
+                                _ColorsTex();
+                              }
+                            } else {
+                              _ColorsTex();
+                              error();
+                            }
+
+                            /*   Navigator.push(
+                              context,
+                              // ignore: prefer_const_constructors
+                              MaterialPageRoute(builder: (context) => Tan_bars()),
+                            );*/
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+                            backgroundColor:
+                                const Color.fromARGB(255, 213, 240, 211),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 32.0,
+                                vertical: 16.0), // Padding del botón
+                            textStyle: const TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'Montserrat', // Fuente personalizada
+                              fontWeight: FontWeight.bold,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  20), // Bordes redondeados
+                            ),
+                            elevation: 40, // Sombra del botón
+                            shadowColor: Colors.black, // Color de la sombra
                           ),
+                          child: const Text('Registrarse'),
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
-                    border: Border.all(
-                        color: const Color.fromARGB(146, 40, 114, 56),
-                        width: 0.9),
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_Nombre.text.isNotEmpty &&
-                          _Correo.text.isNotEmpty &&
-                          _Contrasena.text.isNotEmpty &&
-                          _Contrasena1.text.isNotEmpty) {
-                        if (_Contrasena.text == _Contrasena1.text) {
-                          concide();
-                        } else {
-                          // _showErrorContrasena();
-                          // _Sizebox();
-                          contrasena();
-                          _ColorsTex();
-                        }
-                      } else {
-                        _ColorsTex();
-                        error();
-                      }
-
-                      /*   Navigator.push(
-                        context,
-                        // ignore: prefer_const_constructors
-                        MaterialPageRoute(builder: (context) => Tan_bars()),
-                      );*/
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-                      backgroundColor: const Color.fromARGB(255, 213, 240, 211),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32.0,
-                          vertical: 16.0), // Padding del botón
-                      textStyle: const TextStyle(
-                        fontSize: 12,
-                        fontFamily: 'Montserrat', // Fuente personalizada
-                        fontWeight: FontWeight.bold,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(20), // Bordes redondeados
-                      ),
-                      elevation: 40, // Sombra del botón
-                      shadowColor: Colors.black, // Color de la sombra
-                    ),
-                    child: const Text('Registrarse'),
-                  ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

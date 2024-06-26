@@ -11,10 +11,15 @@ class Plant extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(
-                color: const Color.fromARGB(255, 51, 243, 33), width: 1)),
-        child: const Scaffold(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: const Color.fromARGB(255, 51, 243, 33),
+            width: 1,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors
+              .transparent, // Ensure the Container's decoration is visible
           body: Center(
             child: PlantInformation(),
           ),
@@ -22,6 +27,17 @@ class Plant extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget centros() {
+  return Container(
+    width: 400,
+    height: 300,
+    color: Colors.amberAccent,
+    child: Center(
+      child: Container(),
+    ),
+  );
 }
 
 class PlantInformation extends StatefulWidget {
@@ -77,39 +93,41 @@ class _PlantInformationState extends State<PlantInformation> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        //   decoration: const BoxDecoration(color: Colors.amber),
-        child: SingleChildScrollView(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: SingleChildScrollView(
+        child: Center(
           child: Column(
-            children: <Widget>[
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      //color: Color.fromARGB(255, 29, 25, 15),
-                      ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              //     color: Color.fromARGB(255, 173, 231, 39),
-                              ),
+            children: [
+              Container(
+                width: 380,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //color: Color.fromARGB(255, 231, 39, 39),
+                            ),
+                        child: Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AnimatedCrossFade(
                                 duration: const Duration(seconds: 2),
                                 firstChild: Image.asset("imagenes/tomate.png",
-                                    width: 130, height: 130),
+                                    width: 120, height: 120),
                                 secondChild: Container(
                                   width: 150,
                                   child: const Text(
                                     "Mayor producción, gran calidad en sus cosechas y una alta calidad nutricional, además no requiere de pesticidas y plaguicidas",
                                     textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 crossFadeState: _first
@@ -117,37 +135,46 @@ class _PlantInformationState extends State<PlantInformation> {
                                     : CrossFadeState.showSecond,
                               ),
                               const SizedBox(height: 2),
-                              ElevatedButton(
-                                onPressed: _toggletomateCrossFade,
-                                child: const Text(
-                                  'TOMATE',
-                                  style: TextStyle(
-                                      color: Colors
-                                          .black), // Cambiar el color del texto
+                              Flexible(
+                                child: ElevatedButton(
+                                  onPressed: _toggletomateCrossFade,
+                                  child: const Text(
+                                    'TOMATE',
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Cambiar el color del texto
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 10),
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              //   color: Color.fromARGB(255, 231, 39, 151),
-                              ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //  color: Color.fromARGB(255, 231, 39, 151),
+                            ),
+                        child: Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AnimatedCrossFade(
                                 duration: const Duration(seconds: 2),
                                 firstChild: Image.asset("imagenes/fresa.png",
-                                    width: 140, height: 140),
+                                    width: 120, height: 120),
                                 secondChild: Container(
                                   width: 150,
                                   child: const Text(
                                     "Se puede cultivar en cualquier temporada, es totalmente controlado por el sistema de riego, iluminación",
                                     textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 crossFadeState: _first1
@@ -155,50 +182,53 @@ class _PlantInformationState extends State<PlantInformation> {
                                     : CrossFadeState.showSecond,
                               ),
                               const SizedBox(height: 2),
-                              ElevatedButton(
-                                onPressed: _togglefresaCrossFade,
-                                child: const Text(
-                                  'FRESA',
-                                  style: TextStyle(
-                                      color: Colors
-                                          .black), // Cambiar el color del texto
+                              Flexible(
+                                child: ElevatedButton(
+                                  onPressed: _togglefresaCrossFade,
+                                  child: const Text(
+                                    'FRESA',
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Cambiar el color del texto
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      // color: Color.fromARGB(255, 29, 25, 15),
-                      ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              //    color: Color.fromARGB(255, 173, 231, 39),
-                              ),
+              Container(
+                width: 380,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //  color: Color.fromARGB(255, 231, 39, 39),
+                            ),
+                        child: Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AnimatedCrossFade(
                                 duration: const Duration(seconds: 2),
                                 firstChild: Image.asset("imagenes/lechuga.png",
-                                    width: 140, height: 140),
+                                    width: 120, height: 120),
                                 secondChild: Container(
                                   width: 150,
                                   child: const Text(
                                     "Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes",
                                     textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 crossFadeState: _first2
@@ -206,37 +236,46 @@ class _PlantInformationState extends State<PlantInformation> {
                                     : CrossFadeState.showSecond,
                               ),
                               const SizedBox(height: 2),
-                              ElevatedButton(
-                                onPressed: _togglelechugaCrossFade,
-                                child: const Text(
-                                  'LECHUGA',
-                                  style: TextStyle(
-                                      color: Colors
-                                          .black), // Cambiar el color del texto
+                              Flexible(
+                                child: ElevatedButton(
+                                  onPressed: _togglelechugaCrossFade,
+                                  child: const Text(
+                                    'LECHUGA',
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Cambiar el color del texto
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 10),
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              //    color: Color.fromARGB(255, 231, 39, 151),
-                              ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //      color: Color.fromARGB(255, 231, 39, 151),
+                            ),
+                        child: Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AnimatedCrossFade(
                                 duration: const Duration(seconds: 2),
                                 firstChild: Image.asset("imagenes/peregil.png",
-                                    width: 140, height: 140),
+                                    width: 120, height: 120),
                                 secondChild: Container(
                                   width: 150,
                                   child: const Text(
                                     "El peregil tiene un sabor y un aroma muy peculiar y tiene grandes propiedades nutritivas y medicinales",
                                     textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 crossFadeState: _first3
@@ -244,58 +283,62 @@ class _PlantInformationState extends State<PlantInformation> {
                                     : CrossFadeState.showSecond,
                               ),
                               const SizedBox(height: 2),
-                              ElevatedButton(
-                                onPressed: _toggleperegilCrossFade,
-                                child: const Text(
-                                  'PEREGIL',
-                                  style: TextStyle(
-                                      color: Colors
-                                          .black), // Cambiar el color del texto
+                              Flexible(
+                                child: ElevatedButton(
+                                  onPressed: _toggleperegilCrossFade,
+                                  child: const Text(
+                                    'PEREGIL',
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Cambiar el color del texto
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      //color: Color.fromARGB(255, 29, 25, 15),
-                      ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              // color: Color.fromARGB(255, 173, 231, 39),
-                              ),
+              Container(
+                width: 380,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //      color: Color.fromARGB(255, 231, 39, 39),
+                            ),
+                        child: Flexible(
                           child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                AnimatedCrossFade(
-                                  duration: const Duration(seconds: 2),
-                                  firstChild: Image.asset("imagenes/ajo.png",
-                                      width: 140, height: 140),
-                                  secondChild: Container(
-                                    width: 150,
-                                    child: const Text(
-                                      "Es que podemos sembrarlo y cultivarlo en cualquier época del año sin importar la climatología necesitaremos.",
-                                      textAlign: TextAlign.justify,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AnimatedCrossFade(
+                                duration: const Duration(seconds: 2),
+                                firstChild: Image.asset("imagenes/ajo.png",
+                                    width: 120, height: 120),
+                                secondChild: Container(
+                                  width: 150,
+                                  child: const Text(
+                                    "Es que podemos sembrarlo y cultivarlo en cualquier época del año sin importar la climatología necesitaremos.",
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
                                     ),
                                   ),
-                                  crossFadeState: _first4
-                                      ? CrossFadeState.showFirst
-                                      : CrossFadeState.showSecond,
                                 ),
-                                const SizedBox(height: 2),
-                                ElevatedButton(
+                                crossFadeState: _first4
+                                    ? CrossFadeState.showFirst
+                                    : CrossFadeState.showSecond,
+                              ),
+                              const SizedBox(height: 2),
+                              Flexible(
+                                child: ElevatedButton(
                                   onPressed: _toggleajoCrossFade,
                                   child: const Text(
                                     'AJO',
@@ -304,27 +347,36 @@ class _PlantInformationState extends State<PlantInformation> {
                                             .black), // Cambiar el color del texto
                                   ),
                                 ),
-                              ]),
-                        ),
-                        const SizedBox(width: 10),
-                        Container(
-                          width: 170,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              //        color: Color.fromARGB(255, 231, 39, 151),
                               ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Flexible(
+                      child: Container(
+                        width: 170,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                            //       color: Color.fromARGB(255, 231, 39, 151),
+                            ),
+                        child: Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               AnimatedCrossFade(
                                 duration: const Duration(seconds: 2),
                                 firstChild: Image.asset("imagenes/apio.png",
-                                    width: 130, height: 130),
+                                    width: 120, height: 120),
                                 secondChild: Container(
                                   width: 150,
                                   child: const Text(
                                     "Este crecerá mas sano, mas rápido y más fuerte. Ya que cada planta no tendrá la necesidad de esforzarse en buscar los nutrientes",
                                     textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 crossFadeState: _first5
@@ -332,23 +384,25 @@ class _PlantInformationState extends State<PlantInformation> {
                                     : CrossFadeState.showSecond,
                               ),
                               const SizedBox(height: 2),
-                              ElevatedButton(
-                                onPressed: _toggleapioCrossFade,
-                                child: const Text(
-                                  'API',
-                                  style: TextStyle(
-                                      color: Colors
-                                          .black), // Cambiar el color del texto
+                              Flexible(
+                                child: ElevatedButton(
+                                  onPressed: _toggleapioCrossFade,
+                                  child: const Text(
+                                    'APIO',
+                                    style: TextStyle(
+                                        color: Colors
+                                            .black), // Cambiar el color del texto
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -356,3 +410,314 @@ class _PlantInformationState extends State<PlantInformation> {
     );
   }
 }
+
+/* child: Column(
+        children: <Widget>[
+          Container(
+            decoration: const BoxDecoration(
+                //color: Color.fromARGB(255, 29, 25, 15),
+                ),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //color: Color.fromARGB(255, 231, 39, 39),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/tomate.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "Mayor producción, gran calidad en sus cosechas y una alta calidad nutricional, además no requiere de pesticidas y plaguicidas",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _toggletomateCrossFade,
+                              child: const Text(
+                                'TOMATE',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //  color: Color.fromARGB(255, 231, 39, 151),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/fresa.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "Se puede cultivar en cualquier temporada, es totalmente controlado por el sistema de riego, iluminación",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first1
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _togglefresaCrossFade,
+                              child: const Text(
+                                'FRESA',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+           ),
+           Container(
+            decoration: const BoxDecoration(
+                //color: Color.fromARGB(255, 29, 25, 15),
+                ),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //  color: Color.fromARGB(255, 231, 39, 39),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/lechuga.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "Lechugas mucho más limpias ya de origen y que no necesitan ser tratadas con potentes desinfectantes",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first2
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _togglelechugaCrossFade,
+                              child: const Text(
+                                'LECHUGA',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //      color: Color.fromARGB(255, 231, 39, 151),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/peregil.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "El peregil tiene un sabor y un aroma muy peculiar y tiene grandes propiedades nutritivas y medicinales",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first3
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _toggleperegilCrossFade,
+                              child: const Text(
+                                'PEREGIL',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+           ),
+           Container(
+            decoration: const BoxDecoration(
+                //color: Color.fromARGB(255, 29, 25, 15),
+                ),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //      color: Color.fromARGB(255, 231, 39, 39),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/ajo.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "Es que podemos sembrarlo y cultivarlo en cualquier época del año sin importar la climatología necesitaremos.",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first4
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _toggleajoCrossFade,
+                              child: const Text(
+                                'AJO',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Container(
+                    width: 170,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                        //       color: Color.fromARGB(255, 231, 39, 151),
+                        ),
+                    child: Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AnimatedCrossFade(
+                            duration: const Duration(seconds: 2),
+                            firstChild: Image.asset("imagenes/apio.png",
+                                width: 120, height: 120),
+                            secondChild: Container(
+                              width: 150,
+                              child: const Text(
+                                "Este crecerá mas sano, mas rápido y más fuerte. Ya que cada planta no tendrá la necesidad de esforzarse en buscar los nutrientes",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                            crossFadeState: _first5
+                                ? CrossFadeState.showFirst
+                                : CrossFadeState.showSecond,
+                          ),
+                          const SizedBox(height: 2),
+                          Flexible(
+                            child: ElevatedButton(
+                              onPressed: _toggleapioCrossFade,
+                              child: const Text(
+                                'APIO',
+                                style: TextStyle(
+                                    color: Colors
+                                        .black), // Cambiar el color del texto
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ), */

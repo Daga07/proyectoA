@@ -96,9 +96,8 @@ class _LogeState extends State<Loge> {
                             const SizedBox(height: 30),
                             SizedBox(
                               width: 180,
-                              height: 60,
+                              height: 40,
                               child: TextField(
-                                maxLength: 100,
                                 textInputAction: TextInputAction.continueAction,
                                 autofocus: true,
                                 controller: _User,
@@ -210,37 +209,39 @@ class _LogeState extends State<Loge> {
                                 color: const Color.fromARGB(146, 40, 114, 56),
                                 width: 0.9),
                           ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Record(),
+                          child: Flexible(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Record(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor:
+                                    const Color.fromARGB(255, 0, 0, 0),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 213, 240, 211),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 32.0,
+                                    vertical: 16.0), // Padding del botón
+                                textStyle: const TextStyle(
+                                  fontSize: 12,
+                                  fontFamily:
+                                      'Montserrat', // Fuente personalizada
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor:
-                                  const Color.fromARGB(255, 0, 0, 0),
-                              backgroundColor:
-                                  const Color.fromARGB(255, 213, 240, 211),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 32.0,
-                                  vertical: 16.0), // Padding del botón
-                              textStyle: const TextStyle(
-                                fontSize: 12,
-                                fontFamily:
-                                    'Montserrat', // Fuente personalizada
-                                fontWeight: FontWeight.bold,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      20), // Bordes redondeados
+                                ),
+                                elevation: 40, // Sombra del botón
+                                shadowColor: Colors.black, // Color de la sombra
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    20), // Bordes redondeados
-                              ),
-                              elevation: 40, // Sombra del botón
-                              shadowColor: Colors.black, // Color de la sombra
+                              child: const Text('Registro'),
                             ),
-                            child: const Text('Registro'),
                           ),
                         ),
                       ),
@@ -310,21 +311,21 @@ class _LogeState extends State<Loge> {
             Navigator.pop(context);
           }
         });
-        return SingleChildScrollView(
-          child: Flexible(
-            child: Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-                    color: Colors.red,
-                    // Color intermedio para la línea superior
-                    width: 1.0,
-                  ),
+        return Flexible(
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  // liena de color en un contenar al fina, el pricipio, derecha o izquirda
+                  color: Colors.red,
+                  // Color intermedio para la línea superior
+                  width: 1.0,
                 ),
               ),
-              height: 120,
-              child: Center(
+            ),
+            height: 120,
+            child: Center(
+              child: Flexible(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
@@ -376,7 +377,7 @@ class _LogeState extends State<Loge> {
             );
           }
         });
-        return SingleChildScrollView(
+        return Flexible(
           child: Container(
             decoration: const BoxDecoration(
                 border: Border(
@@ -386,36 +387,38 @@ class _LogeState extends State<Loge> {
                 width: 1.0,
               ),
             )),
-            height: 100,
+            height: 130,
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      const Text(
-                        'USUARIO INGRESÓ CON ÉXITO',
-                        style: const TextStyle(
-                            color: Colors.green,
-                            fontSize: 20,
-                            fontFamily: AutofillHints.addressCity),
-                      ),
-                      Image.asset(
-                        'imagenes/employee.gif',
-                        width: 50,
-                        height: 50,
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Container(
-                            child: const Time(),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                ],
+              child: Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        SizedBox(height: 5),
+                        const Text(
+                          'USUARIO INGRESÓ CON ÉXITO',
+                          style: const TextStyle(
+                              color: Colors.green,
+                              fontSize: 18,
+                              fontFamily: AutofillHints.addressCity),
+                        ),
+                        Image.asset(
+                          'imagenes/employee.gif',
+                          width: 50,
+                          height: 50,
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              child: const Time(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
