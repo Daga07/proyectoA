@@ -98,7 +98,6 @@ class _LogeState extends State<Loge> {
                               width: 180,
                               height: 40,
                               child: TextField(
-                                textInputAction: TextInputAction.continueAction,
                                 autofocus: true,
                                 controller: _User,
                                 style: const TextStyle(fontSize: 15),

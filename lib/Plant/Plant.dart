@@ -17,9 +17,8 @@ class Plant extends StatelessWidget {
             width: 1,
           ),
         ),
-        child: Scaffold(
-          backgroundColor: Colors
-              .transparent, // Ensure the Container's decoration is visible
+        child: const Scaffold(
+          // Ensure the Container's decoration is visible
           body: Center(
             child: PlantInformation(),
           ),
@@ -100,6 +99,7 @@ class _PlantInformationState extends State<PlantInformation> {
         child: Center(
           child: Column(
             children: [
+              const SizedBox(height: 50),
               Container(
                 width: 380,
                 child: Row(

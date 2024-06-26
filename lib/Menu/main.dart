@@ -67,9 +67,9 @@ Widget Menu(context) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 ContainerAnimado(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 Loge(),
                 const SizedBox(height: 20),
               ],
@@ -93,8 +93,8 @@ Widget ImganeRadio() {
 
 Widget ContainerAnimado() {
   return Container(
-    width: 250,
-    height: 160,
+    width: 200,
+    height: 120,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30), color: Colors.amber),
     child: DecoratedBoxTransitionExample(),
@@ -157,8 +157,8 @@ class _DecoratedBoxTransitionExampleState
           decoration: decorationTween.animate(_controller),
           child: Center(
             child: Container(
-              width: 220,
-              height: 180,
+              width: 160,
+              height: 150,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
