@@ -2,49 +2,72 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:proyecto/Help_user/Help.dart';
+import 'package:proyecto/Sesion/sesion.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Sensors extends StatelessWidget {
   const Sensors({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: EditableText.debugDeterministicCursor,
-      home: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 253, 253, 253), // Color de fondo
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: const Color.fromARGB(255, 51, 243, 33), // Color del borde
-            width: 1, // Grosor del borde
-          ),
-        ),
-        child: Scaffold(
-          // ignore: duplicate_ignore
-          // ignore: avoid_unnecessary_containers
-          body: Container(
-            child: const Center(
-              child: SingleChildScrollView(
-                  //MyHomePage
-                  child: Flexible(
-                child: Column(
-                  children: <Widget>[
-                    Center(
-                        child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 15),
-                        Sensor(),
-                        // MyHomePage(),
-                      ],
-                    ))
-                  ],
-                ),
-              )),
-            ),
-          ),
-        ),
+    return MaterialApp(debugShowCheckedModeBanner: false, home: UsuarioWidget()
         // Color de fondo del Scaffold
+        );
+  }
+}
+
+class UsuarioWidget extends StatefulWidget {
+  @override
+  _UsuarioWidgetState createState() => _UsuarioWidgetState();
+}
+
+class _UsuarioWidgetState extends State<UsuarioWidget> {
+  String nombre = 'Daniel';
+  String apellido = 'Gallo';
+  String seleccionado = 'Opción 1';
+
+  @override
+  Widget build(BuildContext context) {
+    Widget? widget; // Asignación antes de usarlo
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 40, // Define la altura del AppBar
+        elevation: 4, // Aumenta la elevación del AppBar
+        //  backgroundColor: Colors.amber, // color del AppBAr
+        //shadowColor: const Color.fromARGB(  255, 124, 244, 54), // Color personalizado para la sombra
+        actions: <Widget>[
+          DropdownButton<String>(
+            value: seleccionado,
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                seleccionado = newValue;
+              }
+            },
+            items: <String>['Opción 1', 'Opción 2', 'Opción 3'].map(
+              (String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              },
+            ).toList(),
+          ),
+        ],
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
       ),
+      body: Center(
+        child: widget ?? Sensor(),
+      ),
+      drawer: sesion(),
     );
   }
 }
@@ -94,59 +117,62 @@ class _SensorState extends State<Sensor> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: _toggleLight,
-          child: Tooltip(
-            message: _light == 0 ? 'ENCENDER' : 'APAGAR',
-            textStyle: const TextStyle(fontSize: 11),
-            child: Icon(
-              _light == 0 ? Icons.lightbulb_outline : Icons.lightbulb_rounded,
-              size: 30,
-              color:
-                  _light == 0 ? null : const Color.fromARGB(255, 233, 231, 142),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: _toggleLight,
+            child: Tooltip(
+              message: _light == 0 ? 'ENCENDER' : 'APAGAR',
+              textStyle: const TextStyle(fontSize: 11),
+              child: Icon(
+                _light == 0 ? Icons.lightbulb_outline : Icons.lightbulb_rounded,
+                size: 30,
+                color: _light == 0
+                    ? null
+                    : const Color.fromARGB(255, 233, 231, 142),
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 213, 240, 211),
+              elevation: 10,
+              shadowColor: const Color.fromARGB(255, 213, 240, 211),
             ),
           ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 213, 240, 211),
-            elevation: 10,
-            shadowColor: const Color.fromARGB(255, 213, 240, 211),
+          const SizedBox(height: 30),
+          SensorGauge(
+            value: _randomHumidity,
+            label: 'HUMEDAD',
+            imageAsset: 'imagenes/humedad.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 113, 215, 233),
+              Color.fromARGB(255, 3, 115, 243)
+            ],
           ),
-        ),
-        const SizedBox(height: 30),
-        SensorGauge(
-          value: _randomHumidity,
-          label: 'HUMEDAD',
-          imageAsset: 'imagenes/humedad.gif',
-          gradientColors: const [
-            Color.fromARGB(255, 113, 215, 233),
-            Color.fromARGB(255, 3, 115, 243)
-          ],
-        ),
-        const SizedBox(height: 15),
-        SensorGauge(
-          value: _randomTemp,
-          label: 'TEMPERATURA',
-          imageAsset: 'imagenes/temperatura.gif',
-          gradientColors: const [
-            Color.fromARGB(255, 211, 233, 113),
-            Color.fromARGB(255, 243, 39, 3)
-          ],
-        ),
-        const SizedBox(height: 15),
-        SensorGauge(
-          value: _randomLevel,
-          label: 'NIVEL DE AGUA',
-          imageAsset: 'imagenes/agua.gif',
-          gradientColors: const [
-            Color.fromARGB(255, 113, 175, 233),
-            Color.fromARGB(255, 8, 1, 75)
-          ],
-        ),
-      ],
+          const SizedBox(height: 15),
+          SensorGauge(
+            value: _randomTemp,
+            label: 'TEMPERATURA',
+            imageAsset: 'imagenes/temperatura.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 211, 233, 113),
+              Color.fromARGB(255, 243, 39, 3)
+            ],
+          ),
+          const SizedBox(height: 15),
+          SensorGauge(
+            value: _randomLevel,
+            label: 'NIVEL DE AGUA',
+            imageAsset: 'imagenes/agua.gif',
+            gradientColors: const [
+              Color.fromARGB(255, 113, 175, 233),
+              Color.fromARGB(255, 8, 1, 75)
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -188,7 +214,7 @@ class SensorGauge extends StatelessWidget {
                 value: value,
                 width: 14,
                 enableAnimation: true,
-                animationDuration: 1200,
+                // animationDuration: 1200, //duración de las animaciones asociadas. La duración se define en milisegundos.
                 gradient: SweepGradient(
                   colors: gradientColors,
                   stops: const <double>[0.15, 0.75],
@@ -197,25 +223,31 @@ class SensorGauge extends StatelessWidget {
             ],
             annotations: <GaugeAnnotation>[
               GaugeAnnotation(
-                widget: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      '${value.toStringAsFixed(1)}%',
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      label,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Image.asset(
-                      imageAsset,
-                      width: 40,
-                      height: 40,
-                    ),
-                  ],
+                widget: Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          '${value.toStringAsFixed(1)}%',
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Flexible(
+                        child: Text(
+                          label,
+                          style: const TextStyle(
+                              fontSize: 10, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Image.asset(
+                        imageAsset,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ],
+                  ),
                 ),
                 angle: 90,
                 positionFactor: 0.5,
@@ -223,117 +255,6 @@ class SensorGauge extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    super.key,
-    /*required this.title*/
-  });
-
-  // final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 10, fontWeight: FontWeight.bold);
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // title: Text(widget.title),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
-      body: Center(
-        child: _widgetOptions[_selectedIndex],
-      ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.green,
-                  Colors.blue,
-                ]),
-              ),
-              child: Text('Drawer Header'),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Business'),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(1);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('School'),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
       ),
     );
   }

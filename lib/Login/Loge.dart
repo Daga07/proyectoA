@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, unused_import, unnecessary_const, avoid_unnecessary_containers
+// ignore_for_file: file_names, non_constant_identifier_names, unused_import, unnecessary_const, avoid_unnecessary_containers, sized_box_for_whitespace
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,13 +49,15 @@ class _LogeState extends State<Loge> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    double fontSize = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
           Container(
-            width: 280,
-            height: 260,
+            width: screenSize.width * 0.52, // % del ancho de la pantalla
+            height: screenSize.height * 0.41, // % del largo de la pantalla
             // tiempo que tarda en abrir el container animado
 
             decoration: BoxDecoration(
@@ -75,8 +77,10 @@ class _LogeState extends State<Loge> {
                           children: <Widget>[
                             const SizedBox(height: 20),
                             Container(
-                              width: 50,
-                              height: 50,
+                              width: screenSize.width *
+                                  0.08, // % del ancho de la pantalla
+                              height: screenSize.height *
+                                  0.08, // % del largo de la pantalla
                               decoration: const BoxDecoration(
                                 color: Color.fromARGB(0, 255, 255, 255),
                                 shape: BoxShape.circle,
@@ -139,8 +143,10 @@ class _LogeState extends State<Loge> {
                         child: Column(
                           children: <Widget>[
                             Container(
-                              width: 50,
-                              height: 50,
+                              width: screenSize.width *
+                                  0.08, // % del ancho de la pantalla
+                              height: screenSize.height *
+                                  0.08, // % del largo de la pantalla
                               decoration: const BoxDecoration(
                                 color: Color.fromARGB(0, 255, 255, 255),
                                 shape: BoxShape.circle,
@@ -159,6 +165,7 @@ class _LogeState extends State<Loge> {
                           children: <Widget>[
                             const SizedBox(height: 20),
                             Container(
+                              width: 180,
                               height: 60,
                               child: TextField(
                                 maxLength: 10,
@@ -239,7 +246,12 @@ class _LogeState extends State<Loge> {
                                 elevation: 40, // Sombra del botón
                                 shadowColor: Colors.black, // Color de la sombra
                               ),
-                              child: const Text('Registro'),
+                              child: Text(
+                                'Registro',
+                                style: TextStyle(
+                                  fontSize: fontSize * 0.02,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -284,7 +296,12 @@ class _LogeState extends State<Loge> {
                               elevation: 40, // Sombra del botón
                               shadowColor: Colors.black, // Color de la sombra
                             ),
-                            child: const Text('Loguear'),
+                            child: Text(
+                              'Loguear',
+                              style: TextStyle(
+                                fontSize: fontSize * 0.02,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -304,25 +321,17 @@ class _LogeState extends State<Loge> {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
+        double fontSize = MediaQuery.of(context).size.width;
         // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
         Future.delayed(const Duration(seconds: 3), () {
           if (Navigator.canPop(context)) {
             Navigator.pop(context);
           }
         });
+
         return Flexible(
-          child: Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-                  color: Colors.red,
-                  // Color intermedio para la línea superior
-                  width: 1.0,
-                ),
-              ),
-            ),
-            height: 120,
+          child: SizedBox(
+            height: 100,
             child: Center(
               child: Flexible(
                 child: Column(
@@ -335,13 +344,14 @@ class _LogeState extends State<Loge> {
                           'CAMPOS VACÍOS',
                           style: TextStyle(
                               color: Colors.red,
-                              fontSize: 20,
+                              //    fontSize: fontSize *  0.04, // Ajuste dinámico del tamaño de la fuente
+
                               fontFamily: AutofillHints.addressCity),
                         ),
                         Image.asset(
                           'imagenes/error.gif',
-                          width: 50,
-                          height: 50,
+                          width: fontSize * 0.04,
+                          height: fontSize * 0.04,
                         ),
                       ],
                     ),
@@ -367,6 +377,7 @@ class _LogeState extends State<Loge> {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
+        double fontSize = MediaQuery.of(context).size.width;
         // Iniciar temporizador para cerrar el BottomSheet después de 3 segundos
         Future.delayed(const Duration(seconds: 3), () {
           if (Navigator.canPop(context)) {
@@ -377,16 +388,8 @@ class _LogeState extends State<Loge> {
           }
         });
         return Flexible(
-          child: Container(
-            decoration: const BoxDecoration(
-                border: Border(
-              bottom: BorderSide(
-                // liena de color en un contenar al fina, el pricipio, derecha o izquirda
-                color: Colors.black,
-                width: 1.0,
-              ),
-            )),
-            height: 130,
+          child: SizedBox(
+            height: 100,
             child: Center(
               child: Flexible(
                 child: Column(
@@ -394,18 +397,18 @@ class _LogeState extends State<Loge> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         const Text(
                           'USUARIO INGRESÓ CON ÉXITO',
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.green,
-                              fontSize: 18,
+                              // fontSize: fontSize * 0.04, // Ajuste dinámico del tamaño de la fuente
                               fontFamily: AutofillHints.addressCity),
                         ),
                         Image.asset(
                           'imagenes/employee.gif',
-                          width: 50,
-                          height: 50,
+                          width: fontSize * 0.04,
+                          height: fontSize * 0.04,
                         ),
                         Column(
                           children: <Widget>[

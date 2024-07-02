@@ -17,6 +17,7 @@ void main() {
 
 class Tower extends StatelessWidget {
   const Tower({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -57,24 +58,20 @@ Widget Menu(context) {
       ),
     ),
     body: Container(
+      alignment: Alignment.topCenter,
       decoration: const BoxDecoration(
         color: Color.fromARGB(255, 255, 255, 255), // Color de fondo del cuerpo
       ),
-      child: Center(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Flexible(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 10),
-                ContainerAnimado(),
-                const SizedBox(height: 50),
-                Loge(),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 30),
+            ContainerAnimado(context),
+            const SizedBox(height: 60),
+            Loge(),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     ),
@@ -82,8 +79,7 @@ Widget Menu(context) {
 }
 
 Widget ImganeRadio() {
-  return Container(
-    color: Colors.transparent,
+  return SizedBox(
     child: const Image(
         image: AssetImage("imagenes/towerucev.png"), fit: BoxFit.contain),
   );
@@ -91,12 +87,11 @@ Widget ImganeRadio() {
 
 //record
 
-Widget ContainerAnimado() {
+Widget ContainerAnimado(BuildContext context) {
+  var screenSize = MediaQuery.of(context).size;
   return Container(
-    width: 200,
-    height: 120,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30), color: Colors.amber),
+    width: 120, // 80% del ancho de la pantalla
+    height: 100, // 50% de la altura de la pantalla
     child: DecoratedBoxTransitionExample(),
   );
 }
@@ -117,7 +112,7 @@ class _DecoratedBoxTransitionExampleState
     begin: BoxDecoration(
       color: Color.fromARGB(255, 255, 242, 250),
       border: Border.all(style: BorderStyle.solid),
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(28),
       boxShadow: const <BoxShadow>[
         BoxShadow(
           color: Color.fromARGB(255, 0, 0, 0),
@@ -150,24 +145,26 @@ class _DecoratedBoxTransitionExampleState
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.white,
-      child: Center(
-        child: DecoratedBoxTransition(
-          decoration: decorationTween.animate(_controller),
-          child: Center(
-            child: Container(
-              width: 160,
-              height: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center(
-                    child: Container(
-                      child: ImganeRadio(),
+    return SizedBox(
+      child: ColoredBox(
+        color: Colors.white,
+        child: Center(
+          child: DecoratedBoxTransition(
+            decoration: decorationTween.animate(_controller),
+            child: Center(
+              child: SizedBox(
+                width: 100, //  del ancho de la pantalla
+                height: 100, //  de la altura de la pantalla
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                      child: SizedBox(
+                        child: ImganeRadio(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
